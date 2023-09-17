@@ -1,13 +1,23 @@
 import './App.css';
 import Form from './components/Form';
+import HomePage from './pages/HomePage';
+import ProfilePage from './pages/ProfilePage';
+import EntryPage from './pages/EntryPage';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 
 function App() {
   return (
+    <BrowserRouter>
     <main className='relative flex min-h-screen flex-col items-center text-content bg-primary theme-dark'>
-      <section className='w-full min-h-screen relative flex flex-col justify-center items-center text-center'>
-        <Form />
-      </section>
-    </main>
+    <Routes>
+      <Route path='/' element={<EntryPage/>} />
+      <Route path='/profile' element={<ProfilePage/>} />
+      <Route path='/home' element={<HomePage/>} />
+    </Routes>
+  </main>
+  </BrowserRouter>
+    
   );
 }
 
