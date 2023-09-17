@@ -2,21 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
   --color-primary: #eeeeee;
   --color-secondary: #ffffff;
-  --color-text: #000000
+  --color-content: #000000;
 }
 
-.theme-light{
+.theme-light {
   --color-primary: #eeeeee;
   --color-secondary: #ffffff;
-  --color-text: #000000
+  --color-content: #000000;
 }
 
-.theme-dark{
+.theme-dark {
   --color-primary: #222222;
   --color-secondary: #111111;
-  --color-text: #ffffff
+  --color-content: #ffffff;
 }
