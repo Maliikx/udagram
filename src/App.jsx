@@ -1,12 +1,14 @@
-import { useState } from 'react'
-import './App.css'
+import './App.css';
+import Form from './components/Form';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <main className='text-text bg-primary theme-dark'>hyu</main>
-  )
+    <main className='relative flex min-h-screen flex-col items-center text-content bg-primary theme-dark'>
+      <section className='w-full min-h-screen relative flex flex-col justify-center items-center text-center'>
+        <Form />
+      </section>
+    </main>
+  );
 }
 
-export default App
+export default App;
