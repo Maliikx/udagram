@@ -1,7 +1,7 @@
 import React from "react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
-const Form = () => {
+const SignIn = (props) => {
   return (
     // all container
     <div
@@ -24,33 +24,38 @@ const Form = () => {
 
         {/* login form */}
         <form action="post" className="  flex flex-col gap-8 text-xl">
-          
           {/* username div */}
           <div className=" flex flex-col gap-1 ">
             <label htmlFor="" className=""></label>
             <input
               type="text"
-              className=" border-b border-gray-400 bg-transparent"
+              className=" border-b border-gray-400 bg-transparent outline-none"
               placeholder="username"
             />
           </div>
 
           {/* Password div */}
           <div className="flex flex-col gap-1">
-            <label htmlFor="" className="">
-              
-            </label>
-            <input type="password" className=" border-b border-gray-400 bg-transparent" placeholder="password" />
+            <label htmlFor="" className=""></label>
+            <input
+              type="password"
+              className=" border-b border-gray-400 bg-transparent outline-none"
+              placeholder="password"
+            />
           </div>
 
-          
           <p className=" text-sm text-center">
             Don't have an account?
-            <span className=" underline text-blue-600 "><Link to="/signup">Sign up</Link> </span>
+            <span
+              className=" underline text-blue-600 cursor-pointer"
+              onClick={() => props.setAuthState("register")}
+            >
+              Sign up
+            </span>
           </p>
 
           <button className=" m-auto text-secondary pl-2 pr-2 w-20  rounded-sm bg-content">
-            <Link to="/home">Login</Link>
+            <Link to="/home">Sign in</Link>
           </button>
         </form>
       </div>
@@ -66,4 +71,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default SignIn;
