@@ -31,7 +31,7 @@ const Signup = () => {
             <label htmlFor="" className="">
               Email
             </label>
-            <input type="text" className=" rounded-sm border border-content" />
+            <input type="email" className=" rounded-sm border border-content" />
           </div>
 
           {/* username div */}
