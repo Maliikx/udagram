@@ -6,15 +6,15 @@ const Signup = () => {
     // all container
     <div
       className="bg-secondary w-[42%]  rounded-lg  flex justify-between text-start  items-center  h-[32rem]  font-sans"
-      id="box-light"
+      id="box"
     >
       {/* main container */}
-      <div className="flex flex-col  h-full justify-around p-5    mb-5 relative ">
+      <div className="flex flex-col  h-full justify-around p-8    mb-5 relative ">
         
         {/* logo container */}
-        <div className="  flex mb-[4rem] ">
+        <div className="  flex ">
           <img
-            src="src/assets/logo-light.png"
+            src="src/assets/logo-dark.png"
             className="w-30 "
             draggable={false}
             alt=""
@@ -22,49 +22,48 @@ const Signup = () => {
           <h1 className=" text-4xl select-none ">dagram</h1>
         </div>
 
-        {/* log in form */}
-        <form action="post" className="  flex flex-col gap-3 text-xl">
+        {/* login form */}
+        <form action="post" className="  flex flex-col gap-6 text-xl">
 
 
              {/* email div */}
           <div className=" flex flex-col gap-1 ">
             <label htmlFor="" className="">
-              Email
+              
             </label>
-            <input type="text" className=" rounded-sm border border-content" />
+            <input type="text" className=" border-b border-gray-400 bg-transparent" placeholder="email" />
           </div>
 
           {/* username div */}
           <div className=" flex flex-col gap-1 ">
             <label htmlFor="" className="">
-              Username
+              
             </label>
-            <input type="text" className=" rounded-sm border border-content" />
+            <input type="text" className=" border-b border-gray-400 bg-transparent" placeholder="username"/>
           </div>
 
           {/* Password div */}
           <div className="flex flex-col gap-1">
             <label htmlFor="" className="">
-              Password
+              
             </label>
-            <input type="password" className=" rounded-sm border border-content" />
+            <input type="password" className=" border-b border-gray-400 bg-transparent"  placeholder="password"/>
           </div>
 
            {/* confirm pass div */}
            <div className=" flex flex-col gap-1 ">
             <label htmlFor="" className="">
-             Confirm Password
             </label>
-            <input type="password" className=" rounded-sm border border-content" />
+            <input type="password" className=" border-b border-gray-400 bg-transparent" placeholder="confirm password"/>
           </div>
           
           <p className=" text-sm text-center">
             Already have an account?
-            <span className=" underline text-blue-600 "><Link to="/">Sign in </Link></span>
+            <span className=" underline text-blue-600 "><Link to="/">Login </Link></span>
           </p>
 
           <button className=" m-auto text-secondary pl-2 pr-2 w-18  rounded-sm bg-content">
-            <Link to="/">sign up</Link>
+            <Link to="/home">sign up</Link>
           </button>
         </form>
       </div>
