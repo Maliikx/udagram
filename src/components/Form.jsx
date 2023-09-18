@@ -5,41 +5,44 @@ const Form = () => {
     // all container
     <div
       className="bg-secondary w-[42%]  rounded-lg  flex justify-between text-start  items-center  h-[28rem]  font-sans"
-      id="box-light"
+      id="box"
     >
       {/* main container */}
       <div className="flex flex-col  h-full justify-around p-5    mb-5 relative ">
-        
         {/* logo container */}
         <div className="  flex mb-[4rem] ">
           <img
-            src="src/assets/logo-light.png"
+            src="src/assets/logo-dark.png"
             className="w-30 "
             draggable={false}
             alt=""
           />
+
           <h1 className=" text-4xl select-none ">dagram</h1>
         </div>
 
         {/* log in form */}
-        <form action="post" className="  flex flex-col gap-5 text-xl">
-
+        <form action="post" className="  flex flex-col gap-8 text-xl">
           {/* username div */}
           <div className=" flex flex-col gap-1 ">
-            <label htmlFor="" className="">
-              Username
-            </label>
-            <input type="text" className=" rounded-sm border border-content" />
+            <label htmlFor="" className=""></label>
+            <input
+              type="text"
+              className=" border-b border-gray-400 bg-transparent"
+              placeholder="username"
+            />
           </div>
 
           {/* Password div */}
-          <div className="flex flex-col gap-1">
-            <label htmlFor="" className="">
-              Password
-            </label>
-            <input type="text" className=" rounded-sm border border-content" />
+          <div className="flex flex-col gap-1 ">
+            <label htmlFor="" className=""></label>
+            <input
+              type="text"
+              className="  border-b   bg-transparent border-gray-400 "
+              placeholder="password"
+            />
           </div>
-          
+
           <p className=" text-sm text-center">
             Don't have an account?
             <span className=" underline text-blue-600 ">Sign up </span>

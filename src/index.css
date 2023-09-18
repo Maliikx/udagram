@@ -15,8 +15,8 @@
 }
 
 .theme-dark {
-  --color-primary: #000111;
-  --color-secondary: #111222;
+  --color-primary: #000012;
+  --color-secondary: #111133;
   --color-content: #ffffff;
   
 }
@@ -26,6 +26,6 @@
                -20px -20px 60px #ffffff;
 }
 #box-dark{
-  box-shadow:  20px 20px 60px #000a37a7,
-               -20px -20px 60px #030226;
+  box-shadow:  20px 20px 60px #0a0a0a,
+  -20px -20px 60px #181818;
 }

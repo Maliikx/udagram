@@ -8,7 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
     <BrowserRouter>
-      <main className="relative flex min-h-screen flex-col items-center text-content bg-primary theme-light">
+      <main className="relative flex min-h-screen flex-col items-center text-content bg-primary theme-dark">
         <Routes>
           <Route path="/" element={<EntryPage />} />
           <Route path="/profile" element={<ProfilePage />} />
