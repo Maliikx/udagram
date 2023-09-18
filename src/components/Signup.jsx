@@ -1,11 +1,11 @@
 import React from "react";
 import {Link} from "react-router-dom"
 
-const Form = () => {
+const Signup = () => {
   return (
     // all container
     <div
-      className="bg-secondary w-[42%]  rounded-lg  flex justify-between text-start  items-center  h-[28rem]  font-sans"
+      className="bg-secondary w-[42%]  rounded-lg  flex justify-between text-start  items-center  h-[32rem]  font-sans"
       id="box-light"
     >
       {/* main container */}
@@ -23,7 +23,16 @@ const Form = () => {
         </div>
 
         {/* log in form */}
-        <form action="post" className="  flex flex-col gap-5 text-xl">
+        <form action="post" className="  flex flex-col gap-3 text-xl">
+
+
+             {/* email div */}
+          <div className=" flex flex-col gap-1 ">
+            <label htmlFor="" className="">
+              Email
+            </label>
+            <input type="text" className=" rounded-sm border border-content" />
+          </div>
 
           {/* username div */}
           <div className=" flex flex-col gap-1 ">
@@ -40,14 +49,22 @@ const Form = () => {
             </label>
             <input type="password" className=" rounded-sm border border-content" />
           </div>
+
+           {/* confirm pass div */}
+           <div className=" flex flex-col gap-1 ">
+            <label htmlFor="" className="">
+             Confirm Password
+            </label>
+            <input type="password" className=" rounded-sm border border-content" />
+          </div>
           
           <p className=" text-sm text-center">
-            Don't have an account?
-            <span className=" underline text-blue-600 "><Link to="/signup">Sign up</Link> </span>
+            Already have an account?
+            <span className=" underline text-blue-600 "><Link to="/">Sign in </Link></span>
           </p>
 
-          <button className=" m-auto text-secondary pl-2 pr-2 w-20  rounded-sm bg-content">
-            <Link to="/home">Login</Link>
+          <button className=" m-auto text-secondary pl-2 pr-2 w-18  rounded-sm bg-content">
+            <Link to="/">sign up</Link>
           </button>
         </form>
       </div>
@@ -55,7 +72,7 @@ const Form = () => {
       <div className=" w-[45%]">
         <img
           src="src/assets/clouds.jpeg"
-          className="  h-[28rem]   rounded-r-lg "
+          className="  h-[32rem]   rounded-r-lg "
           alt=""
         />
       </div>
@@ -63,4 +80,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default Signup;
