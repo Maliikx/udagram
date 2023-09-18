@@ -5,6 +5,8 @@ import ProfilePage from "./pages/ProfilePage";
 import EntryPage from "./pages/EntryPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Signuppage from "./pages/Signuppage";
+import Homes from "./components/home/Homes";
+import Home from "./components/home/Home";
 
 function App() {
   return (
@@ -16,8 +18,10 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/home" element={<HomePage />} />
         </Routes>
+        
       </main>
     </BrowserRouter>
+    
   );
 }
 
