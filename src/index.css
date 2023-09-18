@@ -15,7 +15,17 @@
 }
 
 .theme-dark {
-  --color-primary: #222222;
-  --color-secondary: #111111;
+  --color-primary: #000111;
+  --color-secondary: #111222;
   --color-content: #ffffff;
+  
+}
+
+#box-light{
+  box-shadow:  20px 20px 60px #bebebe,
+               -20px -20px 60px #ffffff;
+}
+#box-dark{
+  box-shadow:  20px 20px 60px #000a37a7,
+               -20px -20px 60px #030226;
 }
