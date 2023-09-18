@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom"
 
 const Form = () => {
   return (
@@ -8,7 +9,7 @@ const Form = () => {
       id="box"
     >
       {/* main container */}
-      <div className="flex flex-col  h-full justify-around p-5    mb-5 relative ">
+      <div className="flex flex-col  h-full justify-around p-8    mb-5 relative ">
         {/* logo container */}
         <div className="  flex mb-[4rem] ">
           <img
@@ -21,8 +22,9 @@ const Form = () => {
           <h1 className=" text-4xl select-none ">dagram</h1>
         </div>
 
-        {/* log in form */}
+        {/* login form */}
         <form action="post" className="  flex flex-col gap-8 text-xl">
+          
           {/* username div */}
           <div className=" flex flex-col gap-1 ">
             <label htmlFor="" className=""></label>
@@ -34,22 +36,21 @@ const Form = () => {
           </div>
 
           {/* Password div */}
-          <div className="flex flex-col gap-1 ">
-            <label htmlFor="" className=""></label>
-            <input
-              type="text"
-              className="  border-b   bg-transparent border-gray-400 "
-              placeholder="password"
-            />
+          <div className="flex flex-col gap-1">
+            <label htmlFor="" className="">
+              
+            </label>
+            <input type="password" className=" border-b border-gray-400 bg-transparent" placeholder="password" />
           </div>
 
+          
           <p className=" text-sm text-center">
             Don't have an account?
-            <span className=" underline text-blue-600 ">Sign up </span>
+            <span className=" underline text-blue-600 "><Link to="/signup">Sign up</Link> </span>
           </p>
 
           <button className=" m-auto text-secondary pl-2 pr-2 w-20  rounded-sm bg-content">
-            Login
+            <Link to="/home">Login</Link>
           </button>
         </form>
       </div>
