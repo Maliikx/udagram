@@ -18,14 +18,12 @@
   --color-primary: #000012;
   --color-secondary: #111133;
   --color-content: #ffffff;
-  
 }
 
-#box-light{
-  box-shadow:  20px 20px 60px #bebebe,
-               -20px -20px 60px #ffffff;
+#box-light {
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
 }
-#box-dark{
-  box-shadow:  20px 20px 60px #0a0a0a,
-  -20px -20px 60px #181818;
+
+#box-dark {
+  box-shadow: 20px 20px 60px #0a0a0a, -20px -20px 60px #181818;
 }
