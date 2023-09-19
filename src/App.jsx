@@ -10,6 +10,7 @@ function App() {
   return (
     <BrowserRouter>
       <main className='relative flex min-h-screen flex-col items-center text-content bg-primary theme-dark'>
+      
         <Routes>
           <Route path='/' element={<AuthPage />} />
           <Route path='/profile' element={<ProfilePage />} />
