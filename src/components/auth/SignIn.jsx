@@ -9,12 +9,12 @@ const SignIn = (props) => {
       id='box'
     >
       {/* main container */}
-      <div className='flex flex-col w-[50%] h-full justify-around p-8    mb-5 relative '>
+      <div className='flex flex-col w-[100%] sm:w-[50%] h-full justify-around p-8    mb-5 relative '>
         {/* logo container */}
         <div className='  flex mb-[4rem] '>
           <img
             src='/assets/logo-dark.png'
-            className='w-30 '
+            className='w-30  '
             draggable={false}
             alt=''
           />
@@ -38,7 +38,7 @@ const SignIn = (props) => {
           <div className='flex flex-col gap-1'>
             <label htmlFor='' className=''></label>
             <input
-              type='Password'
+              type='password'
               className=' border-b border-gray-400 bg-transparent outline-none'
               placeholder='password'
             />
@@ -54,7 +54,7 @@ const SignIn = (props) => {
             </span>
           </p>
 
-          <button className='  text-secondary p-1 rounded-sm bg-blue-700 text-white font-bold font-sans text-base hover:bg-blue-800'>
+          <button className='  text-secondary p-1 rounded-sm bg-blue-700 text-white font-bold font-sans text-base duration-300 hover:bg-blue-800'>
             Sign In
           </button>
         </form>
@@ -63,7 +63,7 @@ const SignIn = (props) => {
       <div className=' w-[45%]'>
         <img
           src='/assets/clouds.jpeg'
-          className='  h-[28rem]   rounded-r-lg w-full'
+          className='h-[28rem] rounded-r-lg w-full hidden sm:inline'
           alt=''
         />
       </div>

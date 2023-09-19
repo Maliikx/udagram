@@ -222,7 +222,7 @@ const SignUp = (props) => {
           </p>
 
           <button
-            className='  text-secondary p-1 rounded-sm bg-blue-700 text-white font-bold font-sans text-base hover:bg-blue-800'
+            className='  text-secondary p-1 rounded-sm bg-blue-700 text-white font-bold font-sans duration-300 text-base hover:bg-blue-800'
             onClick={validateUserInfo}
           >
             Sign Up
