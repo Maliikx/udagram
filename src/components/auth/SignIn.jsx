@@ -13,7 +13,7 @@ const SignIn = (props) => {
         {/* logo container */}
         <div className="  flex mb-[4rem] ">
           <img
-            src="src/assets/logo-dark.png"
+            src="/assets/logo-dark.png"
             className="w-30 "
             draggable={false}
             alt=""
@@ -62,7 +62,7 @@ const SignIn = (props) => {
       {/* side picture div */}
       <div className=" w-[45%]">
         <img
-          src="src/assets/clouds.jpeg"
+          src="/assets/clouds.jpeg"
           className="  h-[28rem]   rounded-r-lg "
           alt=""
         />

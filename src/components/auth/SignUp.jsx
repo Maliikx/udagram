@@ -53,7 +53,7 @@ const SignUp = (props) => {
         {/* logo container */}
         <div className="  flex ">
           <img
-            src="src/assets/logo-dark.png"
+            src="/assets/logo-dark.png"
             className="w-30 "
             draggable={false}
             alt=""
@@ -162,7 +162,7 @@ const SignUp = (props) => {
       {/* side picture div */}
       <div className=" w-[45%]">
         <img
-          src="src/assets/clouds.jpeg"
+          src="/assets/clouds.jpeg"
           className="  h-[32rem]   rounded-r-lg "
           alt=""
         />
