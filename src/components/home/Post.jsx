@@ -2,7 +2,7 @@ function Post(props) {
   return (
     <>
       {/* post div */}
-      <div className="  bg-secondary border p-5 border-white ">
+      <div className="  bg-secondary border rounded-[3px] p-5 border-white ">
         {/* user info div */}
         <div>
           <img src=""></img>
