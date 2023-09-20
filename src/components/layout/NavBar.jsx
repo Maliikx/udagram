@@ -6,7 +6,7 @@ function NavBar (){
         <nav className="fixed h-14 flex bg-secondary w-full  z-50 justify-between mb-1" >
             <div className="flex pl-4 items-center">
             <img src='/assets/logo-dark.png ' className="w-10 h-10"/> 
-            <h1 className=" text-3xl select-none">dagram</h1>
+            <h1 className=" text-2xl select-none">dagram</h1>
             
             </div>
             <div className="p-4 w-3/12 flex">
