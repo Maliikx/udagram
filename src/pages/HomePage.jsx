@@ -8,7 +8,7 @@ const HomePage = () => {
   return (
     <section className='w-full min-h-screen relative flex flex-col items-center'>
       <NavBar />
-      <div className='w-1/3 flex gap-6 flex-col items-center justify-center h-screen'>
+      <div className='w-1/3 flex gap-6 flex-col items-center justify-center h-[830px]'>
         <PostInput />
         <Posts />
       </div>
