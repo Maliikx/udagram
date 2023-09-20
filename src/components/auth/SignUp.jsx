@@ -8,25 +8,25 @@ const SignUp = (props) => {
   const navigate = useNavigate();
 
   const [emailInput, setEmailInput] = useState({
-    value: "",
+    value: '',
     isValid: undefined,
-    errorMessage: "",
+    errorMessage: '',
   });
   const [usernameInput, setUsernameInput] = useState({
-    value: "",
+    value: '',
     isValid: undefined,
-    errorMessage: "",
+    errorMessage: '',
   });
   const [passwordInput, setPasswordInput] = useState({
-    value: "",
+    value: '',
     isValid: undefined,
-    errorMessage: "",
+    errorMessage: '',
   });
 
   const [confirmPasswordInput, setConfirmPasswordInput] = useState({
-    value: "",
+    value: '',
     isValid: undefined,
-    errorMessage: "",
+    errorMessage: '',
   });
 
   function validateUserInfo(event) {
@@ -42,13 +42,13 @@ const SignUp = (props) => {
       setEmailInput({
         ...emailInput,
         isValid: false,
-        errorMessage: "Invalid email",
+        errorMessage: 'Invalid email',
       });
     } else {
       setEmailInput({
         ...emailInput,
         isValid: true,
-        errorMessage: "",
+        errorMessage: '',
       });
     }
 
@@ -63,13 +63,13 @@ const SignUp = (props) => {
       setUsernameInput({
         ...usernameInput,
         isValid: false,
-        errorMessage: "Username is too short",
+        errorMessage: 'Username is too short',
       });
     } else {
       setUsernameInput({
         ...usernameInput,
         isValid: true,
-        errorMessage: "",
+        errorMessage: '',
       });
     }
 
@@ -83,13 +83,13 @@ const SignUp = (props) => {
       setPasswordInput({
         ...passwordInput,
         isValid: false,
-        errorMessage: "Password is too short",
+        errorMessage: 'Password is too short',
       });
     } else {
       setPasswordInput({
         ...passwordInput,
         isValid: true,
-        errorMessage: "",
+        errorMessage: '',
       });
     }
 
@@ -103,13 +103,13 @@ const SignUp = (props) => {
       setConfirmPasswordInput({
         ...confirmPasswordInput,
         isValid: false,
-        errorMessage: "Passwords do not match",
+        errorMessage: 'Passwords do not match',
       });
     } else {
       setConfirmPasswordInput({
         ...confirmPasswordInput,
         isValid: true,
-        errorMessage: "",
+        errorMessage: '',
       });
     }
   }
@@ -125,35 +125,35 @@ const SignUp = (props) => {
       let email = emailInput.value;
       let password = passwordInput.value;
       const users = [user, email, password];
-      localStorage.setItem("Users", JSON.stringify(users));
-      navigate("/home");
+      localStorage.setItem('Users', JSON.stringify(users));
+      navigate('/home');
     }
   }, [validateUserInfo]);
-
 
   return (
     // all container
     <div
-      className=' text-sm sm:text-base bg-secondary w-[90%]  sm:w-[42%] rounded-lg  flex justify-between text-start shadow-2xl  items-center  h-[28rem]  font-sans'
+      className='  bg-secondary w-[90%]  md:w-[42%] rounded-lg  flex justify-between text-start shadow-2xl  items-center  h-[28rem]  font-sans'
       id='box'
     >
       {/* main container */}
-      <div className=' text-sm sm:text-base flex flex-col w-[50%] h-full justify-around p-8 mb-5 relative '>
+      <div className='  flex flex-col w-[100%] lg:w-[50%] h-full justify-around p-8 mb-5 relative '>
         {/* logo container */}
-        <div className="  flex ">
+        <div className='flex'>
           <img
             src='/assets/logo-dark.png'
-            className='w-30 w-5 h-5 sm:w-10 h-10'
+            className='w-10 h-10 md:w-10 md:h-10'
             draggable={false}
-            alt=""
+            alt=''
           />
-          <h1 className=' text-4xl select-none  text-blue-500 sm:text-red-500  text-10px sm:text-4xl'>dagram</h1>
+
+          <h1 className=' text-3xl select-none text-content'>dagram</h1>
         </div>
 
         {/* login form */}
-        <form action='post' className='  flex flex-col gap-6 text-xl text-sm sm:text-base'>
+        <form action='post' className='  flex flex-col gap-6  '>
           {/* email div */}
-          <div className=' flex flex-col gap-1 group z-0 relative text-sm sm:text-base  text-blue-500 sm:text-red-500'>
+          <div className=' flex flex-col gap-1 group z-0 relative'>
             <input
               type='email'
               name='email'
@@ -185,7 +185,7 @@ const SignUp = (props) => {
           </div>
 
           {/* username div */}
-          <div className=' flex flex-col gap-1 group z-0 relative text-sm sm:text-base  text-blue-500 sm:text-red-500'>
+          <div className=' flex flex-col gap-1 group z-0 relative  '>
             <input
               type='username'
               name='username'
@@ -217,7 +217,7 @@ const SignUp = (props) => {
           </div>
 
           {/* Password div */}
-          <div className=' flex flex-col gap-1 group z-0 relative text-sm sm:text-base  text-blue-500 sm:text-red-500'>
+          <div className=' flex flex-col gap-1 group z-0 relative   '>
             <input
               type='password'
               name='password'
@@ -249,9 +249,9 @@ const SignUp = (props) => {
           </div>
 
           {/* confirm pass div */}
-          <div className=' flex flex-col gap-1 group z-0 relative text-sm sm:text-base  text-blue-500 sm:text-red-500'>
+          <div className=' flex flex-col gap-1 group z-0 relative   '>
             <input
-              type='confirmPassword'
+              type='password'
               name='confirmPassword'
               id='confirmPassword'
               class='block py-1 px-0 w-full text-sm focus:placeholder:invisible bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer'
@@ -282,10 +282,10 @@ const SignUp = (props) => {
             </label>
           </div>
 
-          <p className=' text-sm text-center flex gap-1 text-sm sm:text-base text-blue-500 sm:text-red-500'>
-          <p className='hidden sm:inline'> Already have an account?</p>
+          <p className=' text-sm text-center flex gap-1  '>
+            <p className='hidden md:inline'> Already have an account?</p>
             <span
-              className=' text-sm sm:text-base  text-blue-500 sm:text-red-500 underline text-blue-500 hover:text-blue-600 duration-300 cursor-pointer '
+              className='    underline text-blue-500 hover:text-blue-600 duration-300 cursor-pointer '
               onClick={() => props.setAuthState('login')}
             >
               Login now
@@ -293,7 +293,7 @@ const SignUp = (props) => {
           </p>
 
           <button
-            className='text-sm sm:text-base text-secondary p-1 rounded-sm bg-blue-700 hover:bg-blue-800 text-white font-bold font-sans duration-300 text-base '
+            className=' text-secondary p-1 rounded-sm bg-blue-700 hover:bg-blue-800 text-white font-bold font-sans duration-300 text-base '
             onClick={validateUserInfo}
           >
             Sign up
@@ -301,10 +301,10 @@ const SignUp = (props) => {
         </form>
       </div>
       {/* side picture div */}
-      <div className=" w-[45%]">
+      <div className=' w-[45%] hidden lg:inline'>
         <img
           src='/assets/clouds.jpeg'
-          className='  h-[28rem]   rounded-r-lg hidden sm:inline '
+          className='  h-[28rem]   rounded-r-lg  '
           alt=''
         />
       </div>
