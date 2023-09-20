@@ -17,27 +17,27 @@ const SignIn = (props) => {
   return (
     // all container
     <div
-      className='bg-secondary w-[42%]  rounded-lg  flex justify-between text-start  items-center shadow-2xl  h-[28rem]  font-sans'
+      className='bg-secondary w-[90%]  sm:w-[42%]  rounded-lg  flex justify-between text-start  items-center shadow-2xl  h-[28rem]  font-sans'
       id='box'
     >
       {/* main container */}
-      <div className='flex flex-col w-[100%] sm:w-[50%] h-full justify-around p-8    mb-5 relative '>
+      <div className=' text-sm sm:text-base flex flex-col w-[100%] sm:w-[50%] h-full justify-around p-8    mb-5 relative '>
         {/* logo container */}
         <div className='  flex mb-[4rem] '>
           <img
             src='/assets/logo-dark.png'
-            className='w-30  '
+            className='w-30 w-5 h-5 sm:w-10 h-10'
             draggable={false}
             alt=''
           />
 
-          <h1 className=' text-4xl select-none '>dagram</h1>
+          <h1 className=' text-4xl select-none  text-blue-500 sm:text-red-500  text-10px sm:text-4xl'>dagram</h1>
         </div>
 
         {/* login form */}
         <form action='post' className='  flex flex-col gap-8 text-xl'>
           {/* username div */}
-          <div className=' flex flex-col gap-1 group z-0 relative '>
+          <div className=' flex flex-col gap-1 group z-0 relative  text-blue-500 sm:text-red-500 text-sm sm:text-base'>
             <input
               type='username'
               name='username'
@@ -69,7 +69,7 @@ const SignIn = (props) => {
           </div>
 
           {/* Password div */}
-          <div className=' flex flex-col gap-1 group z-0 relative '>
+          <div className=' flex flex-col gap-1 group z-0 relative  text-blue-500 sm:text-red-500 text-sm sm:text-base '>
             <input
               type='password'
               name='password'
@@ -100,17 +100,18 @@ const SignIn = (props) => {
             </label>
           </div>
 
-          <p className=' text-sm text-center flex gap-1'>
-            Don't have an account?
+          <p className='  text-blue-500 sm:text-red-500 text-sm text-center flex gap-1 text-sm sm:text-base'>
+           <p className='hidden sm:inline'> Don't have an account?</p>
+            
             <span
-              className=' underline text-blue-500 hover:text-blue-600 cursor-pointer'
+              className='  text-blue-500 sm:text-red-500 underline text-blue-500 hover:text-blue-600 cursor-pointer   '
               onClick={() => props.setAuthState('register')}
             >
               Register now
             </span>
-          </p>
+            </p>
 
-          <button className='  text-secondary p-1 rounded-sm bg-blue-700 text-white font-bold font-sans text-lg duration-300 hover:bg-blue-800'>
+          <button className=' text-sm sm:text-base text-secondary p-1 rounded-sm bg-blue-700 text-white font-bold font-sans text-lg duration-300 hover:bg-blue-800'>
             Sign In
           </button>
         </form>

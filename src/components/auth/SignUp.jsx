@@ -128,26 +128,26 @@ const SignUp = (props) => {
   return (
     // all container
     <div
-      className='bg-secondary w-[42%] rounded-lg  flex justify-between text-start shadow-2xl  items-center  h-[32rem]  font-sans'
+      className=' text-sm sm:text-base bg-secondary w-[90%]  sm:w-[42%] rounded-lg  flex justify-between text-start shadow-2xl  items-center  h-[28rem]  font-sans'
       id='box'
     >
       {/* main container */}
-      <div className='flex flex-col w-[50%] h-full justify-around p-8 mb-5 relative '>
+      <div className=' text-sm sm:text-base flex flex-col w-[50%] h-full justify-around p-8 mb-5 relative '>
         {/* logo container */}
         <div className='  flex '>
           <img
             src='/assets/logo-dark.png'
-            className='w-30 '
+            className='w-30 w-5 h-5 sm:w-10 h-10'
             draggable={false}
             alt=''
           />
-          <h1 className=' text-4xl select-none '>dagram</h1>
+          <h1 className=' text-4xl select-none  text-blue-500 sm:text-red-500  text-10px sm:text-4xl'>dagram</h1>
         </div>
 
         {/* login form */}
-        <form action='post' className='  flex flex-col gap-6 text-xl'>
+        <form action='post' className='  flex flex-col gap-6 text-xl text-sm sm:text-base'>
           {/* email div */}
-          <div className=' flex flex-col gap-1 group z-0 relative '>
+          <div className=' flex flex-col gap-1 group z-0 relative text-sm sm:text-base  text-blue-500 sm:text-red-500'>
             <input
               type='email'
               name='email'
@@ -179,7 +179,7 @@ const SignUp = (props) => {
           </div>
 
           {/* username div */}
-          <div className=' flex flex-col gap-1 group z-0 relative '>
+          <div className=' flex flex-col gap-1 group z-0 relative text-sm sm:text-base  text-blue-500 sm:text-red-500'>
             <input
               type='username'
               name='username'
@@ -211,7 +211,7 @@ const SignUp = (props) => {
           </div>
 
           {/* Password div */}
-          <div className=' flex flex-col gap-1 group z-0 relative '>
+          <div className=' flex flex-col gap-1 group z-0 relative text-sm sm:text-base  text-blue-500 sm:text-red-500'>
             <input
               type='password'
               name='password'
@@ -243,7 +243,7 @@ const SignUp = (props) => {
           </div>
 
           {/* confirm pass div */}
-          <div className=' flex flex-col gap-1 group z-0 relative '>
+          <div className=' flex flex-col gap-1 group z-0 relative text-sm sm:text-base  text-blue-500 sm:text-red-500'>
             <input
               type='confirmPassword'
               name='confirmPassword'
@@ -276,10 +276,10 @@ const SignUp = (props) => {
             </label>
           </div>
 
-          <p className=' text-sm text-center flex gap-1'>
-            Already have an account?
+          <p className=' text-sm text-center flex gap-1 text-sm sm:text-base text-blue-500 sm:text-red-500'>
+          <p className='hidden sm:inline'> Already have an account?</p>
             <span
-              className=' underline text-blue-500 hover:text-blue-600 duration-300 cursor-pointer '
+              className=' text-sm sm:text-base  text-blue-500 sm:text-red-500 underline text-blue-500 hover:text-blue-600 duration-300 cursor-pointer '
               onClick={() => props.setAuthState('login')}
             >
               Login now
@@ -287,7 +287,7 @@ const SignUp = (props) => {
           </p>
           
           <button
-            className='text-secondary p-1 rounded-sm bg-blue-700 hover:bg-blue-800 text-white font-bold font-sans duration-300 text-base '
+            className='text-sm sm:text-base text-secondary p-1 rounded-sm bg-blue-700 hover:bg-blue-800 text-white font-bold font-sans duration-300 text-base '
             onClick={validateUserInfo}
           >
             Sign up
@@ -298,7 +298,7 @@ const SignUp = (props) => {
       <div className=' w-[45%]'>
         <img
           src='/assets/clouds.jpeg'
-          className='  h-[32rem]   rounded-r-lg '
+          className='  h-[28rem]   rounded-r-lg hidden sm:inline '
           alt=''
         />
       </div>
