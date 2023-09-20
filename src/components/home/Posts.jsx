@@ -2,7 +2,7 @@ import React from "react";
 import Post from "./Post";
 import { Heading1 } from "lucide-react";
 
-const Posts = (props) => {
+const Posts = () => {
   const posts = [
     {
       id: 1,
