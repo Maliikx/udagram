@@ -1,47 +1,50 @@
-import React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useReducer } from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+var accValid = false;
 
 const SignUp = (props) => {
   const navigate = useNavigate();
 
   const [emailInput, setEmailInput] = useState({
-    value: '',
+    value: "",
     isValid: undefined,
-    errorMessage: '',
+    errorMessage: "",
   });
   const [usernameInput, setUsernameInput] = useState({
-    value: '',
+    value: "",
     isValid: undefined,
-    errorMessage: '',
+    errorMessage: "",
   });
   const [passwordInput, setPasswordInput] = useState({
-    value: '',
+    value: "",
     isValid: undefined,
-    errorMessage: '',
+    errorMessage: "",
   });
 
   const [confirmPasswordInput, setConfirmPasswordInput] = useState({
-    value: '',
+    value: "",
     isValid: undefined,
-    errorMessage: '',
+    errorMessage: "",
   });
 
   function validateUserInfo(event) {
     event.preventDefault();
 
-    if (!emailInput.value || !emailInput.value.includes('@gmail.com')) {
+    if (!emailInput.value || !emailInput.value.includes("@gmail.com")) {
       setEmailInput({
         ...emailInput,
         isValid: false,
-        errorMessage: 'Invalid email',
+        errorMessage: "Invalid email",
       });
     } else {
       setEmailInput({
         ...emailInput,
         isValid: true,
-        errorMessage: '',
+        errorMessage: "",
       });
     }
 
@@ -50,13 +53,13 @@ const SignUp = (props) => {
       setUsernameInput({
         ...usernameInput,
         isValid: false,
-        errorMessage: 'Username is too short',
+        errorMessage: "Username is too short",
       });
     } else {
       setUsernameInput({
         ...usernameInput,
         isValid: true,
-        errorMessage: '',
+        errorMessage: "",
       });
     }
 
@@ -64,13 +67,13 @@ const SignUp = (props) => {
       setPasswordInput({
         ...passwordInput,
         isValid: false,
-        errorMessage: 'Password is too short',
+        errorMessage: "Password is too short",
       });
     } else {
       setPasswordInput({
         ...passwordInput,
         isValid: true,
-        errorMessage: '',
+        errorMessage: "",
       });
     }
 
@@ -78,13 +81,13 @@ const SignUp = (props) => {
       setConfirmPasswordInput({
         ...confirmPasswordInput,
         isValid: false,
-        errorMessage: 'Passwords do not match',
+        errorMessage: "Passwords do not match",
       });
     } else {
       setConfirmPasswordInput({
         ...confirmPasswordInput,
         isValid: true,
-        errorMessage: '',
+        errorMessage: "",
       });
     }
   }
@@ -96,44 +99,72 @@ const SignUp = (props) => {
       passwordInput.isValid &&
       confirmPasswordInput.isValid
     ) {
-      navigate('/home');
+      let user = usernameInput.value;
+      let email = emailInput.value;
+      let password = passwordInput.value;
+      const users = [user, email, password];
+      localStorage.setItem("Users", JSON.stringify(users));
+      navigate("/home");
     }
   }, [validateUserInfo]);
+
 
   return (
     // all container
     <div
-      className='bg-secondary w-[42%] rounded-lg  flex justify-between text-start shadow-2xl  items-center  h-[32rem]  font-sans'
-      id='box'
+      className="bg-secondary w-[42%] rounded-lg  flex justify-between text-start shadow-2xl  items-center  h-[32rem]  font-sans"
+      id="box"
     >
       {/* main container */}
-      <div className='flex flex-col w-[50%] h-full justify-around p-8 mb-5 relative '>
+      <div className="flex flex-col w-[50%] h-full justify-around p-8 mb-5 relative ">
         {/* logo container */}
-        <div className='  flex '>
+        <div className="  flex ">
           <img
-            src='/assets/logo-dark.png'
-            className='w-30 '
+            src="/assets/logo-dark.png"
+            className="w-30 "
             draggable={false}
-            alt=''
+            alt=""
           />
-          <h1 className=' text-4xl select-none '>dagram</h1>
+          <h1 className=" text-4xl select-none ">dagram</h1>
         </div>
 
         {/* login form */}
-        <form action='post' className='  flex flex-col gap-6 text-xl'>
+        <form action="post" className="  flex flex-col gap-6 text-xl">
+          {/* username div */}
+          <div className=" flex flex-col gap-1 ">
+            <label htmlFor="" className="text-red-600 text-sm">
+              {usernameInput.errorMessage}
+            </label>
+            <input
+              type="text"
+              value={usernameInput.value}
+              className={` border-b ${
+                usernameInput.isValid === false
+                  ? "border-red-600"
+                  : "border-gray-400"
+              } bg-transparent outline-none`}
+              placeholder="Username"
+              onChange={(event) => {
+                setUsernameInput({
+                  value: event.target.value,
+                });
+              }}
+            />
+          </div>
+
           {/* email div */}
-          <div className=' flex flex-col gap-1 '>
-            <label htmlFor='' className='text-red-600 text-sm'>
+          <div className=" flex flex-col gap-1 ">
+            <label htmlFor="" className="text-red-600 text-sm">
               {emailInput.errorMessage}
             </label>
             <input
-              type='email'
+              type="email"
               className={` border-b ${
                 emailInput.isValid === false
-                  ? 'border-red-600'
-                  : 'border-gray-400'
+                  ? "border-red-600"
+                  : "border-gray-400"
               } bg-transparent outline-none`}
-              placeholder='Email'
+              placeholder="Email"
               value={emailInput.value}
               onChange={(event) => {
                 setEmailInput({
@@ -143,43 +174,21 @@ const SignUp = (props) => {
             />
           </div>
 
-          {/* username div */}
-          <div className=' flex flex-col gap-1 '>
-            <label htmlFor='' className='text-red-600 text-sm'>
-              {usernameInput.errorMessage}
-            </label>
-            <input
-              type='text'
-              value={usernameInput.value}
-              className={` border-b ${
-                usernameInput.isValid === false
-                  ? 'border-red-600'
-                  : 'border-gray-400'
-              } bg-transparent outline-none`}
-              placeholder='Username'
-              onChange={(event) => {
-                setUsernameInput({
-                  value: event.target.value,
-                });
-              }}
-            />
-          </div>
-
           {/* Password div */}
-          <div className='flex flex-col gap-1'>
-            <label htmlFor='' className='text-red-600 text-sm'>
-              {' '}
+          <div className="flex flex-col gap-1">
+            <label htmlFor="" className="text-red-600 text-sm">
+              {" "}
               {passwordInput.errorMessage}
             </label>
             <input
-              type='password'
+              type="password"
               value={passwordInput.value}
               className={` border-b ${
                 passwordInput.isValid === false
-                  ? 'border-red-600'
-                  : 'border-gray-400'
+                  ? "border-red-600"
+                  : "border-gray-400"
               } bg-transparent outline-none`}
-              placeholder='Password'
+              placeholder="Password"
               onChange={(event) => {
                 setPasswordInput({
                   value: event.target.value,
@@ -189,20 +198,20 @@ const SignUp = (props) => {
           </div>
 
           {/* confirm pass div */}
-          <div className=' flex flex-col gap-1 '>
-            <label htmlFor='' className='text-red-600 text-sm'>
-              {' '}
+          <div className=" flex flex-col gap-1 ">
+            <label htmlFor="" className="text-red-600 text-sm">
+              {" "}
               {confirmPasswordInput.errorMessage}
             </label>
             <input
-              type='password'
+              type="password"
               value={confirmPasswordInput.value}
               className={` border-b ${
                 confirmPasswordInput.isValid === false
-                  ? 'border-red-600'
-                  : 'border-gray-400'
+                  ? "border-red-600"
+                  : "border-gray-400"
               } bg-transparent outline-none`}
-              placeholder='Confirm password'
+              placeholder="Confirm password"
               onChange={(event) => {
                 setConfirmPasswordInput({
                   value: event.target.value,
@@ -211,18 +220,18 @@ const SignUp = (props) => {
             />
           </div>
 
-          <p className=' text-sm text-center flex gap-1'>
+          <p className=" text-sm text-center flex gap-1">
             Already have an account?
             <span
-              className=' underline text-blue-600 cursor-pointer '
-              onClick={() => props.setAuthState('login')}
+              className=" underline text-blue-600 cursor-pointer "
+              onClick={() => props.setAuthState("login")}
             >
               Sign In
             </span>
           </p>
-          
+
           <button
-            className='  text-secondary p-1 rounded-sm bg-blue-700 text-white font-bold font-sans duration-300 text-base hover:bg-blue-800'
+            className="  text-secondary p-1 rounded-sm bg-blue-700 text-white font-bold font-sans duration-300 text-base hover:bg-blue-800"
             onClick={validateUserInfo}
           >
             Sign Up
@@ -230,11 +239,11 @@ const SignUp = (props) => {
         </form>
       </div>
       {/* side picture div */}
-      <div className=' w-[45%]'>
+      <div className=" w-[45%]">
         <img
-          src='/assets/clouds.jpeg'
-          className='  h-[32rem]   rounded-r-lg '
-          alt=''
+          src="/assets/clouds.jpeg"
+          className="  h-[32rem]   rounded-r-lg "
+          alt=""
         />
       </div>
     </div>
