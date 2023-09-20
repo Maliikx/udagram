@@ -12,7 +12,7 @@ function Post(props) {
           <img
             src="/assets/cat.jpg"
             alt=""
-            className="w-12 h-12 rounded-full"
+            className="w-10 h-10 rounded-full"
           />
           <h1>
             <b>{props.post.user}</b>
