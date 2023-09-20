@@ -304,7 +304,7 @@ const SignUp = (props) => {
       <div className=' w-[45%] hidden lg:inline'>
         <img
           src='/assets/clouds.jpeg'
-          className='  h-[28rem]   rounded-r-lg  '
+          className='  h-[28rem]   rounded-r-lg w-full  '
           alt=''
         />
       </div>
