@@ -285,7 +285,7 @@ const SignUp = (props) => {
               Login now
             </span>
           </p>
-
+          
           <button
             className='text-secondary p-1 rounded-sm bg-blue-700 hover:bg-blue-800 text-white font-bold font-sans duration-300 text-base '
             onClick={validateUserInfo}
