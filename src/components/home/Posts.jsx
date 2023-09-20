@@ -1,7 +1,7 @@
 import React from 'react';
 import Post from './Post';
 
-const Posts = (props) => {
+const Posts = () => {
   const posts = [
     {
       id: 1,
