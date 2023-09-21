@@ -121,11 +121,32 @@ const SignUp = (props) => {
       passwordInput.isValid &&
       confirmPasswordInput.isValid
     ) {
-      let user = usernameInput.value;
+      let username = usernameInput.value;
       let email = emailInput.value;
       let password = passwordInput.value;
-      const users = [user, email, password];
-      localStorage.setItem('Users', JSON.stringify(users));
+      const user = {
+        username: username,
+        email: email,
+        password: password,
+      };
+
+      if (!localStorage.getItem('users')) {
+        localStorage.setItem('users', JSON.stringify([]));
+      }
+
+      const registeredUsers = JSON.parse(localStorage.getItem('users'));
+      for (let i = 0; i < registeredUsers.length; i++) {
+        if (
+          registeredUsers[i].email === user.email ||
+          registeredUsers[i].username === user.username
+        ) {
+          alert('User already exists');
+          return;
+        }
+      }
+      registeredUsers.push(user);
+      localStorage.setItem('users', JSON.stringify(registeredUsers));
+      localStorage.setItem('loggedInUser', JSON.stringify(user));
       navigate('/home');
     }
   }, [validateUserInfo]);
@@ -147,7 +168,9 @@ const SignUp = (props) => {
             alt=''
           />
 
-          <h1 className=' text-3xl select-none text-content'>dagram</h1>
+          <h1 className=' text-3xl select-none text-content spacing tracking-wide'>
+            dagram
+          </h1>
         </div>
 
         {/* login form */}
