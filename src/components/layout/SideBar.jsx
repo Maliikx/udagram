@@ -5,7 +5,8 @@ function SideBar() {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    setUser(JSON.parse(localStorage.getItem('loggedInUser')));
+    if (localStorage.getItem('loggedInUser'))
+      setUser(JSON.parse(localStorage.getItem('loggedInUser')));
   }, []);
 
   return (
