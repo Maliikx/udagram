@@ -3,21 +3,40 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: #eeeeee;
+  --color-primary: #dddddd;
   --color-secondary: #ffffff;
   --color-content: #000000;
 }
 
 .theme-light {
-  --color-primary: #eeeeee;
+  --color-wall: #eeeeee;
+  --color-primary: #dbdbdb;
   --color-secondary: #ffffff;
+  --color-accent: #f1f1f1f1;
   --color-content: #000000;
 }
 
 .theme-dark {
-  --color-primary: #000012;
-  --color-secondary: #111133;
+  --color-wall: #121212;
+  --color-primary: #121212;
+  --color-secondary: #1e1e1e;
+  --color-accent: #252526;
   --color-content: #ffffff;
+}
+
+@layer utilities {
+  @variants responsive {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+  }
 }
 
 #box-light {

@@ -121,6 +121,32 @@ const SignUp = (props) => {
       passwordInput.isValid &&
       confirmPasswordInput.isValid
     ) {
+      let username = usernameInput.value;
+      let email = emailInput.value;
+      let password = passwordInput.value;
+      const user = {
+        username: username,
+        email: email,
+        password: password,
+      };
+
+      if (!localStorage.getItem('users')) {
+        localStorage.setItem('users', JSON.stringify([]));
+      }
+
+      const registeredUsers = JSON.parse(localStorage.getItem('users'));
+      for (let i = 0; i < registeredUsers.length; i++) {
+        if (
+          registeredUsers[i].email === user.email ||
+          registeredUsers[i].username === user.username
+        ) {
+          alert('User already exists');
+          return;
+        }
+      }
+      registeredUsers.push(user);
+      localStorage.setItem('users', JSON.stringify(registeredUsers));
+      localStorage.setItem('loggedInUser', JSON.stringify(user));
       navigate('/home');
     }
   }, [validateUserInfo]);
@@ -128,26 +154,29 @@ const SignUp = (props) => {
   return (
     // all container
     <div
-      className='bg-secondary w-[42%] rounded-lg  flex justify-between text-start shadow-2xl  items-center  h-[32rem]  font-sans'
+      className='  bg-secondary w-[90%]  md:w-[42%] rounded-lg  flex justify-between text-start shadow-2xl  items-center  h-[28rem]  font-sans'
       id='box'
     >
       {/* main container */}
-      <div className='flex flex-col w-[50%] h-full justify-around p-8 mb-5 relative '>
+      <div className='  flex flex-col w-[100%] lg:w-[50%] h-full justify-around p-8 mb-5 relative '>
         {/* logo container */}
-        <div className='  flex '>
+        <div className='flex'>
           <img
             src='/assets/logo-dark.png'
-            className='w-30 '
+            className='w-10 h-10 md:w-10 md:h-10'
             draggable={false}
             alt=''
           />
-          <h1 className=' text-4xl select-none '>dagram</h1>
+
+          <h1 className=' text-3xl select-none text-content spacing tracking-wide'>
+            dagram
+          </h1>
         </div>
 
         {/* login form */}
-        <form action='post' className='  flex flex-col gap-6 text-xl'>
+        <form action='post' className='  flex flex-col gap-6  '>
           {/* email div */}
-          <div className=' flex flex-col gap-1 group z-0 relative '>
+          <div className=' flex flex-col gap-1 group z-0 relative'>
             <input
               type='email'
               name='email'
@@ -179,7 +208,7 @@ const SignUp = (props) => {
           </div>
 
           {/* username div */}
-          <div className=' flex flex-col gap-1 group z-0 relative '>
+          <div className=' flex flex-col gap-1 group z-0 relative  '>
             <input
               type='username'
               name='username'
@@ -211,7 +240,7 @@ const SignUp = (props) => {
           </div>
 
           {/* Password div */}
-          <div className=' flex flex-col gap-1 group z-0 relative '>
+          <div className=' flex flex-col gap-1 group z-0 relative   '>
             <input
               type='password'
               name='password'
@@ -243,9 +272,9 @@ const SignUp = (props) => {
           </div>
 
           {/* confirm pass div */}
-          <div className=' flex flex-col gap-1 group z-0 relative '>
+          <div className=' flex flex-col gap-1 group z-0 relative   '>
             <input
-              type='confirmPassword'
+              type='password'
               name='confirmPassword'
               id='confirmPassword'
               class='block py-1 px-0 w-full text-sm focus:placeholder:invisible bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer'
@@ -276,18 +305,18 @@ const SignUp = (props) => {
             </label>
           </div>
 
-          <p className=' text-sm text-center flex gap-1'>
-            Already have an account?
+          <p className=' text-sm text-center flex gap-1  '>
+            <p className='hidden md:inline'> Already have an account?</p>
             <span
-              className=' underline text-blue-500 hover:text-blue-600 duration-300 cursor-pointer '
+              className='    underline text-blue-500 hover:text-blue-600 duration-300 cursor-pointer '
               onClick={() => props.setAuthState('login')}
             >
               Login now
             </span>
           </p>
-          
+
           <button
-            className='text-secondary p-1 rounded-sm bg-blue-700 hover:bg-blue-800 text-white font-bold font-sans duration-300 text-base '
+            className=' text-secondary p-1 rounded-sm bg-blue-700 hover:bg-blue-800 text-white font-bold font-sans duration-300 text-base '
             onClick={validateUserInfo}
           >
             Sign up
@@ -295,10 +324,10 @@ const SignUp = (props) => {
         </form>
       </div>
       {/* side picture div */}
-      <div className=' w-[45%]'>
+      <div className=' w-[45%] hidden lg:inline'>
         <img
           src='/assets/clouds.jpeg'
-          className='  h-[32rem]   rounded-r-lg '
+          className='  h-[28rem]   rounded-r-lg w-full  '
           alt=''
         />
       </div>

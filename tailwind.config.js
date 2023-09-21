@@ -4,8 +4,10 @@ export default {
   theme: {
     extend: {
       colors: {
+        wall: 'var(--color-wall)',
         primary: 'var(--color-primary)',
         secondary: 'var(--color-secondary)',
+        accent: 'var(--color-accent)',
         content: 'var(--color-content)',
       },
     },
