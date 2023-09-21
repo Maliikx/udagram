@@ -9,6 +9,7 @@ const Posts = () => {
       user: 'omar sand',
       content:
         "this is user1's postthis is user2's postthis is user2's postthis is user2's postthis is user2's postthis is user2's postthis is user2's post",
+    
     },
     {
       id: 2,
