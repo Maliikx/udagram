@@ -22,7 +22,6 @@ const SignUp = (props) => {
     isValid: undefined,
     errorMessage: '',
   });
-
   const [confirmPasswordInput, setConfirmPasswordInput] = useState({
     value: '',
     isValid: undefined,
@@ -124,17 +123,24 @@ const SignUp = (props) => {
       let username = usernameInput.value;
       let email = emailInput.value;
       let password = passwordInput.value;
-      const user = {
-        username: username,
-        email: email,
-        password: password,
-      };
 
       if (!localStorage.getItem('users')) {
         localStorage.setItem('users', JSON.stringify([]));
       }
 
       const registeredUsers = JSON.parse(localStorage.getItem('users'));
+      const registeredUsersCount = registeredUsers.length
+
+      const user = {
+        id: registeredUsersCount + 1,
+        username: username,
+        email: email,
+        password: password,
+        posts: [],
+        likes:[]
+      }; 
+
+      
       for (let i = 0; i < registeredUsers.length; i++) {
         if (
           registeredUsers[i].email === user.email ||
@@ -144,6 +150,7 @@ const SignUp = (props) => {
           return;
         }
       }
+      
       registeredUsers.push(user);
       localStorage.setItem('users', JSON.stringify(registeredUsers));
       localStorage.setItem('loggedInUser', JSON.stringify(user));
