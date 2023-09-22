@@ -15,7 +15,7 @@ function Post(props) {
             className='w-10 h-10 rounded-full rounded-tl-none border border-blue-700 border-x-2'
           />
           <h1 className='text-xl capitalize'>
-            <b>{props.post.user}</b>
+            <b>{props.post.user.username}</b>
           </h1>
         </div>
         {/* content */}
