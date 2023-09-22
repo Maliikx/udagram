@@ -21,6 +21,19 @@ const SignIn = (props) => {
     e.preventDefault();
 
     const users = JSON.parse(localStorage.getItem("users"));
+    if (!users) {
+      setUsernameInput({
+        ...usernameInput,
+        isValid: false,
+        errorMessage: "Username or password is incorrect",
+      });
+      setPasswordInput({
+        ...passwordInput,
+        isValid: false,
+        errorMessage: "Username or password is incorrect",
+      });
+      return;
+    }
     const user = users.find(
       (user) =>
         user.username === usernameInput.value &&
