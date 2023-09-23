@@ -1,6 +1,7 @@
 import { MessageSquare } from 'lucide-react';
 import { Heart } from 'lucide-react';
 import { Repeat2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 
 function Post(props) {
@@ -15,8 +16,8 @@ function Post(props) {
             alt=''
             className='w-10 h-10 rounded-full rounded-tl-none border border-blue-700 border-x-2'
           />
-          <h1 className='text-xl capitalize'>
-            <b>{props.post.user.username}</b>
+          <h1 className='text-xl capitalize hover:underline'>
+            <Link to = {`/profile/${props.post.user.username}`}><b>{props.post.user.username}</b></Link>
           </h1>
         </div>
         {/* content */}

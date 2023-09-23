@@ -15,6 +15,9 @@ const PostInput = (props) => {
   }, []);
 
   function createPost() {
+    if (!postContent){
+      return;
+    }
     props.setPosts((prevPosts) => [
       ...prevPosts,
       {
