@@ -1,72 +1,85 @@
-import { Heart, HomeIcon, Sun, User2Icon, PlusSquare, Router, LogOut } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import { Link, Route, Routes } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom';
-
-
+import {
+  Heart,
+  HomeIcon,
+  Sun,
+  User2Icon,
+  PlusSquare,
+  Router,
+  LogOut,
+  Moon,
+} from "lucide-react";
+import { useContext, useEffect, useState } from "react";
+import { Link, Route, Routes } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { ThemeContext } from "../../utils/themeContext";
 
 function SideBar() {
   const navigate = useNavigate();
 
   const [user, setUser] = useState({});
 
+  const { isDarkMode, toggleDarkMode } = useContext(ThemeContext);
+
   useEffect(() => {
-    if (localStorage.getItem('loggedInUser'))
-      setUser(JSON.parse(localStorage.getItem('loggedInUser')));
+    if (localStorage.getItem("loggedInUser"))
+      setUser(JSON.parse(localStorage.getItem("loggedInUser")));
   }, []);
 
-  function logout(){
-    
-    
-    navigate('/');
-    localStorage.removeItem('loggedInUser');
-
+  function logout() {
+    navigate("/");
+    localStorage.removeItem("loggedInUser");
   }
 
-  
   return (
-    <nav className='flex flex-col justify-between w-[30%] h-[85%] mr-2 mt-[calc(56px+2.5rem)] p-6 text-white bg-blue-700 rounded-3xl rounded-tr-none rounded-bl-none '>
-      <ul className='w-full flex h-1/2  flex-col justify-around'>
-        <li className='flex items-center border-b py-5  hover:scale-105 duration-300'>
-          <HomeIcon className=' inline-block mr-2' size={36} />
-          <Link to="/home" className='text-2xl align-middle ' >Home</Link>
+    <nav className="flex flex-col justify-between w-[30%] h-[85%] mr-2 mt-[calc(56px+2.5rem)] p-6 text-white bg-blue-700 rounded-3xl rounded-tr-none rounded-bl-none ">
+      <ul className="w-full flex h-1/2  flex-col justify-around">
+        <li className="flex items-center border-b py-5  hover:scale-105 duration-300">
+          <HomeIcon className=" inline-block mr-2" size={36} />
+          <Link to="/home" className="text-2xl align-middle ">
+            Home
+          </Link>
         </li>
-        <li className='flex items-center border-b py-5 hover:scale-105 duration-300'>
-          <User2Icon className='inline-block mr-2' size={36} />
-          <Link to={`/profile/${user.username}`} className='text-2xl align-middle ' >Profile</Link>
+        <li className="flex items-center border-b py-5 hover:scale-105 duration-300">
+          <User2Icon className="inline-block mr-2" size={36} />
+          <Link
+            to={`/profile/${user.username}`}
+            className="text-2xl align-middle "
+          >
+            Profile
+          </Link>
+        </li>
+        <li className="flex items-center border-b py-5 hover:scale-105 duration-300">
+          <Heart className="inline-block mr-2" size={36} />
+          <button className="text-2xl align-middle ">Likes</button>
+        </li>
+        <li className="flex items-center border-b py-5 hover:scale-105 duration-300">
+          <PlusSquare className="inline-block mr-2" size={36} />
+          <button className="text-2xl align-middle ">Post</button>
+        </li>
+        <li className="flex items-center border-b py-5 hover:scale-105 duration-300">
+          {isDarkMode? <Sun className="inline-block mr-2" size={36} /> : <Moon className="inline-block mr-2" size={36} />}
           
-        </li>
-        <li className='flex items-center border-b py-5 hover:scale-105 duration-300'>
-          <Heart className='inline-block mr-2' size={36} />
-          <button className='text-2xl align-middle '>Likes</button>
-        </li>
-        <li className='flex items-center border-b py-5 hover:scale-105 duration-300'>
-          <PlusSquare className='inline-block mr-2' size={36} />
-          <button className='text-2xl align-middle '>Post</button>
-        </li>
-        <li className='flex items-center border-b py-5 hover:scale-105 duration-300'>
-          <Sun className='inline-block mr-2' size={36} />
-          <button className='text-2xl align-middle '>Light mode</button>
+          <button className="text-2xl align-middle " onClick={toggleDarkMode}>
+           {isDarkMode?'Light mode':'Dark mode'}
+          </button>
         </li>
       </ul>
-      <div className='flex items-center gap-3 justify-between'>
-        
-        <div className='flex items-center gap-3'>
-        <img
-          src='/assets/cat.jpg'
-          alt=''
-          className='w-12 h-12 rounded-full  border border-x-2'
-        />
-        <h1 className='text-lg font-bold capitalize'>
-          {user.username ? user.username : 'User'}
-        </h1>
+      <div className="flex items-center gap-3 justify-between">
+        <div className="flex items-center gap-3">
+          <img
+            src="/assets/cat.jpg"
+            alt=""
+            className="w-12 h-12 rounded-full  border border-x-2"
+          />
+          <h1 className="text-lg font-bold capitalize">
+            {user.username ? user.username : "User"}
+          </h1>
         </div>
-        
-        <button onClick={logout}><LogOut /></button>
-        </div>
-        
-        
-      
+
+        <button onClick={logout}>
+          <LogOut />
+        </button>
+      </div>
     </nav>
   );
 }

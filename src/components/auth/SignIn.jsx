@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ThemeContext } from "../../utils/themeContext";
 
 const SignIn = (props) => {
   const navigate = useNavigate();
+  const { isDarkMode } = useContext(ThemeContext);
 
   const [usernameInput, setUsernameInput] = useState({
     value: "",
@@ -68,7 +70,7 @@ const SignIn = (props) => {
         {/* logo container */}
         <div className="flex">
           <img
-            src="/assets/logo-dark.png"
+            src={`/assets/logo-${isDarkMode ? "dark" : "light"}.png `}
             className="w-10 h-10 md:w-10 md:h-10"
             draggable={false}
             alt=""
