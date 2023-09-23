@@ -9,7 +9,7 @@ const HomePage = () => {
   return (
     <>
       <NavBar />
-      <section className="w-full h-screen relative flex items-start justify-around">
+      <section className="w-[80%] h-screen relative flex items-start justify-around">
         <SideBar />
         <div className="w-2/3 bg-secondary p-10 flex gap-6 flex-col items-center justify- h-[85vh] mt-[calc(56px+2.5rem)] rounded-3xl rounded-tl-none rounded-br-none">
           <Posts />
