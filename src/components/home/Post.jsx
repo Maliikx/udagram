@@ -7,7 +7,7 @@ function Post(props) {
   return (
     <>
       {/* post div */}
-      <div className='  bg-accent rounded-tl-none rounded-br-none rounded-3xl px-5 py-4 text-lg flex flex-col gap-6 '>
+      <div className='  w-full bg-accent rounded-tl-none rounded-br-none rounded-3xl px-5 py-4 text-lg flex flex-col gap-6 '>
         {/* user info div */}
         <div className='text-content flex gap-1 items-center '>
           <img

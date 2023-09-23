@@ -16,11 +16,11 @@ function SideBar() {
 
   
   return (
-    <nav className='flex flex-col justify-between w-[15%] h-[85%] ml-2 mt-[calc(56px+2.5rem)] p-6 text-white bg-blue-700 rounded-3xl rounded-tr-none rounded-bl-none '>
+    <nav className='flex flex-col justify-between w-[30%] h-[85%] mr-2 mt-[calc(56px+2.5rem)] p-6 text-white bg-blue-700 rounded-3xl rounded-tr-none rounded-bl-none '>
       <ul className='w-full flex h-1/2  flex-col justify-around'>
         <li className='flex items-center border-b py-5  hover:scale-105 duration-300'>
           <HomeIcon className=' inline-block mr-2' size={36} />
-          <button className='inline-block text-2xl align-middle '>Home</button>
+          <Link to="/home" className='text-2xl align-middle ' >Home</Link>
         </li>
         <li className='flex items-center border-b py-5 hover:scale-105 duration-300'>
           <User2Icon className='inline-block mr-2' size={36} />
