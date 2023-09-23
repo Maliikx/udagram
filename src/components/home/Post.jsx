@@ -2,6 +2,7 @@ import { MessageSquare } from 'lucide-react';
 import { Heart } from 'lucide-react';
 import { Repeat2 } from 'lucide-react';
 
+
 function Post(props) {
   return (
     <>

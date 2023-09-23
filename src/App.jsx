@@ -12,7 +12,7 @@ function App() {
       <main className='relative flex min-h-screen flex-col items-center text-content bg-wall theme-dark'>
         <Routes>
           <Route path='/' element={<AuthPage />} />
-          <Route path='/profile' element={<ProfilePage />} />
+          <Route path='/profile/:username' element={<ProfilePage />} />
           <Route path='/home' element={<HomePage />} />
         </Routes>
       </main>

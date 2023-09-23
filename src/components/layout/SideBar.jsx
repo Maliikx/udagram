@@ -1,7 +1,12 @@
-import { Heart, HomeIcon, Sun, User2Icon, PlusSquare } from 'lucide-react';
+import { Heart, HomeIcon, Sun, User2Icon, PlusSquare, Router } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { Link, Route, Routes } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+
 
 function SideBar() {
+  const navigate = useNavigate();
+
   const [user, setUser] = useState({});
 
   useEffect(() => {
@@ -9,6 +14,7 @@ function SideBar() {
       setUser(JSON.parse(localStorage.getItem('loggedInUser')));
   }, []);
 
+  
   return (
     <nav className='flex flex-col justify-between w-[15%] h-[85%] ml-2 mt-[calc(56px+2.5rem)] p-6 text-white bg-blue-700 rounded-3xl rounded-tr-none rounded-bl-none '>
       <ul className='w-full flex h-1/2  flex-col justify-around'>
@@ -18,7 +24,8 @@ function SideBar() {
         </li>
         <li className='flex items-center border-b py-5 hover:scale-105 duration-300'>
           <User2Icon className='inline-block mr-2' size={36} />
-          <button className='text-2xl align-middle '>Profile</button>
+          <Link to={`/profile/${user.username}`} className='text-2xl align-middle ' >Profile</Link>
+          
         </li>
         <li className='flex items-center border-b py-5 hover:scale-105 duration-300'>
           <Heart className='inline-block mr-2' size={36} />
