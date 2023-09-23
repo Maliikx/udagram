@@ -32,12 +32,12 @@ function RightSide() {
             ))}
         </div>
       </div>
-      <h1 className="font-bold mb-5">YOU LOVE THIS WEBSITE!</h1>
+      {/* <h1 className="font-bold mb-5">YOU LOVE THIS WEBSITE!</h1>
       <img
         src="public/assets/Hypnotic-spiral.jpg"
         alt=""
         className="rounded-full animate-spin    w-48"
-      />
+      /> */}
     </nav>
   );
 }
