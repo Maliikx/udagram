@@ -1,7 +1,8 @@
-import { Heart, HomeIcon, Sun, User2Icon, PlusSquare, Router } from 'lucide-react';
+import { Heart, HomeIcon, Sun, User2Icon, PlusSquare, Router, LogOut } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
+
 
 
 function SideBar() {
@@ -13,6 +14,14 @@ function SideBar() {
     if (localStorage.getItem('loggedInUser'))
       setUser(JSON.parse(localStorage.getItem('loggedInUser')));
   }, []);
+
+  function logout(){
+    
+    
+    navigate('/');
+    localStorage.removeItem('loggedInUser');
+
+  }
 
   
   return (
@@ -40,16 +49,24 @@ function SideBar() {
           <button className='text-2xl align-middle '>Light mode</button>
         </li>
       </ul>
-      <div className='flex items-center gap-3'>
+      <div className='flex items-center gap-3 justify-between'>
+        
+        <div className='flex items-center gap-3'>
         <img
           src='/assets/cat.jpg'
           alt=''
           className='w-12 h-12 rounded-full  border border-x-2'
         />
-        <h1 className='text-xl font-bold capitalize'>
+        <h1 className='text-lg font-bold capitalize'>
           {user.username ? user.username : 'User'}
         </h1>
-      </div>
+        </div>
+        
+        <button onClick={logout}><LogOut /></button>
+        </div>
+        
+        
+      
     </nav>
   );
 }

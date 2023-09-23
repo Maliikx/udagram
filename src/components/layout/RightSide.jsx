@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function RightSide() {
   const [registeredUsers, setRegisteredUsers] = useState([]);
@@ -32,7 +33,7 @@ function RightSide() {
                   alt=""
                   className="w-10 h-10 rounded-full"
                 />
-                <h1 className="font-bold capitalize">{user.username}</h1>
+                <Link to = {`/profile/${user.username}`}><h1 className="font-bold capitalize hover:underline">{user.username}</h1></Link>
               </div>
             ))}
         </div>
