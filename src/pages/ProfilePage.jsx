@@ -9,6 +9,7 @@ import Post from "../components/home/Post";
 
 const ProfilePage = () => {
   const { username } = useParams();
+  const [posts, setPosts] = useState([]);
 
   const [profilePosts, setProfilePosts] = useState([]);
 
@@ -45,7 +46,12 @@ const ProfilePage = () => {
             {profilePosts
               .sort((a, b) => b.createdAt - a.createdAt)
               .map((post) => (
-                <Post post={post} key={post.id} />
+                <Post
+                  post={post}
+                  key={post.id}
+                  setPosts={setPosts}
+                  posts={posts}
+                />
               ))}
           </div>
         </div>
