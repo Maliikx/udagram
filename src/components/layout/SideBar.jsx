@@ -33,21 +33,21 @@ function SideBar() {
   return (
     <nav className="flex flex-col justify-between w-[30%] h-[85%] mr-2 mt-[calc(56px+2.5rem)] p-6 text-white bg-blue-700 rounded-3xl rounded-tr-none rounded-bl-none ">
       <ul className="w-full flex h-1/2  flex-col justify-around">
+          <Link to="/home" className="text-2xl align-middle ">
         <li className="flex items-center border-b py-5  hover:scale-105 duration-300">
           <HomeIcon className=" inline-block mr-2" size={36} />
-          <Link to="/home" className="text-2xl align-middle ">
             Home
-          </Link>
         </li>
-        <li className="flex items-center border-b py-5 hover:scale-105 duration-300">
-          <User2Icon className="inline-block mr-2" size={36} />
+          </Link>
           <Link
             to={`/profile/${user.username}`}
             className="text-2xl align-middle "
           >
+        <li className="flex items-center border-b py-5 hover:scale-105 duration-300">
+          <User2Icon className="inline-block mr-2" size={36} />
             Profile
-          </Link>
         </li>
+          </Link>
         <li className="flex items-center border-b py-5 hover:scale-105 duration-300">
           <Heart className="inline-block mr-2" size={36} />
           <button className="text-2xl align-middle ">Likes</button>
