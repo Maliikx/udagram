@@ -2,6 +2,7 @@ import { Image } from "lucide-react";
 import { useEffect, useState } from "react";
 import useIsMount from "../../utils/hooks/useMount";
 
+
 const PostInput = (props) => {
   const [postContent, setPostContent] = useState("");
   const [users, setUsers] = useState([]);
