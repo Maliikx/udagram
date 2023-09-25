@@ -1,6 +1,7 @@
 import { Image } from "lucide-react";
 import { useEffect, useState } from "react";
 import useIsMount from "../../utils/hooks/useMount";
+import toast from "react-hot-toast";
 
 const PostInput = (props) => {
   const [postContent, setPostContent] = useState("");
@@ -16,6 +17,9 @@ const PostInput = (props) => {
 
   function createPost() {
     if (!postContent) {
+      toast.error('Post cannot be empty', {
+      
+      })
       return;
     }
     props.setPosts((prevPosts) => [
@@ -25,7 +29,6 @@ const PostInput = (props) => {
         content: postContent,
         user: loggedInUser,
         likeCount: 0,
-
         comments: [],
         sharedUserIds: [],
         createdAt: Date.now(),
@@ -70,6 +73,7 @@ const PostInput = (props) => {
       };
       return updatedUsers;
     });
+    toast.success('Post successfully added!')
   }
 
   useEffect(() => {

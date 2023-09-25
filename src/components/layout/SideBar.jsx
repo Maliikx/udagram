@@ -48,10 +48,13 @@ function SideBar() {
             Profile
         </li>
           </Link>
+          <Link to="/likes">
         <li className="flex items-center border-b py-5 hover:scale-105 duration-300">
+
           <Heart className="inline-block mr-2" size={36} />
           <button className="text-2xl align-middle ">Likes</button>
         </li>
+        </Link>
         <li className="flex items-center border-b py-5 hover:scale-105 duration-300">
           <PlusSquare className="inline-block mr-2" size={36} />
           <button className="text-2xl align-middle ">Post</button>

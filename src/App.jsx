@@ -7,6 +7,8 @@ import AuthPage from "./pages/AuthPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useContext } from "react";
 import { ThemeContext } from "./utils/themeContext";
+import { Toaster } from "react-hot-toast";
+import LikesPage from "./pages/LikesPage";
 
 function App() {
   const { isDarkMode } = useContext(ThemeContext);
@@ -17,10 +19,15 @@ function App() {
           isDarkMode ? "theme-dark" : "theme-light"
         }`}
       >
+        <Toaster position="top-center" toastOptions={{
+          className: "mt-16 ",
+        }}/>
         <Routes>
           <Route path="/" element={<AuthPage />} />
-          <Route path="/profile/:username" element={<ProfilePage />} />
+        
           <Route path="/home" element={<HomePage />} />
+          <Route path="/profile/:username" element={<ProfilePage />} />
+          <Route path="/likes" element={<LikesPage />} />
         </Routes>
       </main>
     </BrowserRouter>

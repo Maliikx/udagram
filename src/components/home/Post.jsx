@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 
 function Post(props) {
   const [isLiked, setIsLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(0);
   // const [loggedInUser, setLoggedInUser] = useState([]);
 
   const users = JSON.parse(localStorage.getItem("users"));
@@ -22,8 +21,7 @@ function Post(props) {
 
   useEffect(() => {
     if (!currentPost) return;
-    console.log(currentPost);
-    console.log(loggedInUser.likes);
+
     const x = loggedInUser.likes.reduce((a, b) => {
       return a || b["id"] == currentPost["id"];
     }, false);
@@ -75,7 +73,7 @@ function Post(props) {
               className={`${isLiked ? "fill-red-600 text-red-600" : ""} `}
               fill="transparent"
             />
-            <div className="">{props.post.likeCount}</div>
+            <div className={`${isLiked ? "text-red-600 font-bold" : "text-content font-bold"} `}>{isLiked ? 'Liked!': 'Like'}</div>
           </button>
           <button className=" hover:text-blue-600  bg-transparent text-content flex items-center duration-300 gap-1">
             <MessageSquare /> 22
