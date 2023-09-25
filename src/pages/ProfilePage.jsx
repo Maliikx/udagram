@@ -8,61 +8,6 @@ import RightSide from '../components/layout/RightSide';
 import Post from '../components/home/Post';
 import { quotes } from '../utils/constants/quotes';
 
-import { useRef } from 'react';
-
-const QuoteSlider = (props) => {
-  const [scrollX, setScrollX] = useState(0);
-  const sliderRef = useRef(null);
-  const startX = useRef(0);
-  const isDragging = useRef(false);
-
-  const handleDragStart = (event) => {
-    startX.current = event.touches ? event.touches[0].clientX : event.clientX;
-    isDragging.current = true;
-  };
-
-  const handleDragMove = (event) => {
-    if (!isDragging.current) return;
-
-    const currentX = event.touches ? event.touches[0].clientX : event.clientX;
-    const deltaX = startX.current - currentX;
-    setScrollX(scrollX - deltaX);
-    startX.current = currentX;
-  };
-
-  const handleDragEnd = () => {
-    isDragging.current = false;
-    startX.current = 0;
-  };
-
-  return (
-    <div
-      className=' flex overflow-x-scroll no-scrollba w-full  items-center justify-center border-b p-3 relative'
-      ref={sliderRef}
-      onTouchStart={handleDragStart}
-      onTouchMove={handleDragMove}
-      onTouchEnd={handleDragEnd}
-      onMouseDown={handleDragStart}
-      onMouseMove={handleDragMove}
-      onMouseUp={handleDragEnd}
-    >
-      <div className=' flex' style={{ transform: `translateX(${scrollX}px)` }}>
-        {quotes.map((quote, index) => (
-          <div
-            className={`px-4 py-2 flex-shrink-0 mr-4 bg-accent text-content font-medium rounded p-2 cursor-pointer ${
-              props.bio === quote && 'bg-blue-700 text-white'
-            }`}
-            onClick={() => props.setBio(quote)}
-            key={index}
-          >
-            {quote}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
 const ProfilePage = () => {
   const { username } = useParams();
   const [posts, setPosts] = useState([]);

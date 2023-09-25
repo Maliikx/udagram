@@ -22,7 +22,7 @@ const Posts = () => {
   }, []);
 
   return (
-    <div
+    <motion.div
       transition={{ duration: 0.4, delay: 0.1 }}
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
@@ -39,7 +39,7 @@ const Posts = () => {
             <Post post={post} key={post.id} setPosts={setPosts} posts={posts} />
           ))
       )}
-    </div>
+    </motion.div>
   );
 };
 
