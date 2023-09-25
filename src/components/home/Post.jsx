@@ -4,9 +4,17 @@ import { Repeat2 } from "lucide-react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Cmnt from "./Cmnt";
+
+// import Comment from "/components/home/Comment.jsx";
 
 function Post(props) {
   const [isLiked, setIsLiked] = useState(false);
+  const [pressedComment, setPressedComment] = useState(false);
+  const [commentContent, setCommentContent] = useState('');
+  const [preCommentContent, setPreCommentContent] = useState('');
+  var content = '';
+  
   // const [loggedInUser, setLoggedInUser] = useState([]);
 
   const users = JSON.parse(localStorage.getItem("users"));
@@ -49,6 +57,10 @@ function Post(props) {
       localStorage.setItem("users", JSON.stringify(users));
     }
   }
+  function manageComment() {
+    setPressedComment(!pressedComment);
+    return pressedComment;
+  }
 
   return (
     <>
@@ -71,7 +83,11 @@ function Post(props) {
         <div> {props.post.content}</div>
         {/* buttons div */}
         <hr />
-        <div className=" flex text-secondary justify-around">
+        <div
+          className={` flex text-secondary justify-around ${
+            pressedComment ? !pressedComment : pressedComment
+          }`}
+        >
           <button
             onClick={() => {
               setIsLiked(!isLiked);
@@ -91,13 +107,46 @@ function Post(props) {
               {isLiked ? "Liked!" : "Like"}
             </div>
           </button>
-          <button className=" hover:text-blue-600  bg-transparent text-content flex items-center duration-300 gap-1">
-            <MessageSquare /> 22
+          <button
+            onClick={manageComment}
+            className=" hover:text-blue-600  bg-transparent text-content flex items-center duration-300 gap-1"
+          >
+            <MessageSquare /> Comment
           </button>
           <button className=" hover:text-green-600 bg-transparent text-content flex items-center duration-300 gap-1">
             <Repeat2 />
-            21
+           
           </button>
+        </div>
+        <div className={` flex   flex-col gap-3 text-secondary justify-around  ${
+              pressedComment ? "" : "hidden"
+            }`} >
+          <div>
+            <div className=" flex">
+            <input
+              type="text"
+              className="w-full text-content bg-secondary rounded-br-none  rounded-2xl p-2 outline-none"
+                placeholder="Write comment..."
+                value={preCommentContent}
+                onChange={(event) => {
+                  setPreCommentContent(event.target.value);
+                }}/>
+              <button className="text-white font-bold bg-blue-700 px-5 rounded duration-300 "
+                onClick={
+                  () => { 
+                    setCommentContent(preCommentContent)
+                    setPreCommentContent('')
+                  }
+               }
+              >
+              Comment
+            </button>
+
+            </div>
+          </div>
+          <div>
+            <Cmnt cmnt={commentContent} />
+          </div>
         </div>
       </div>
     </>

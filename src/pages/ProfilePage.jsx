@@ -8,8 +8,10 @@ import RightSide from "../components/layout/RightSide";
 import Post from "../components/home/Post";
 
 const ProfilePage = () => {
+
   const { username } = useParams();
   const [posts, setPosts] = useState([]);
+  const [bio, setBio] = useState([]);
 
   const [profilePosts, setProfilePosts] = useState([]);
 
@@ -35,13 +37,13 @@ const ProfilePage = () => {
       setPosts(JSON.parse(localStorage.getItem("posts")));
     }
   }, []);
-  
+
   return (
     <>
       <NavBar />
       <section className="w-full lg:w-[85%] h-screen relative flex items-start justify-around">
         <SideBar />
-        <div className=" w-full lg:w-[85%] w-2/3 bg-secondary p-10 flex gap-6 flex-col items-center justify- h-[85vh] mt-[calc(56px+2.5rem)] rounded-3xl rounded-tl-none rounded-br-none">
+        <div className=" w-full lg:w-[85%] w-2/3 bg-secondary p-10 flex gap-6 flex-col items-center justify- h-[85vh] mt-[calc(56px+2.5rem)] ">
           <div className="w-full flex-col items-center flex  justify-center border-b pb-3 ">
             <img
               src="/assets/cat.jpg"
@@ -51,7 +53,10 @@ const ProfilePage = () => {
             <h1 className=" text-2xl font-bold">{username}</h1>
           </div>
           <div className="rounded flex flex-col gap-6 w-full overflow-y-scroll no-scrollbar">
-            {profilePosts
+            {profilePosts.length === 0 ? (
+        <div className="self-center font-bold">- Nothing to show -</div>
+      ):(
+            profilePosts
               .sort((a, b) => b.createdAt - a.createdAt)
               .map((post) => (
                 <Post
@@ -60,7 +65,7 @@ const ProfilePage = () => {
                   setPosts={setPosts}
                   posts={posts}
                 />
-              ))}
+              )))}
           </div>
         </div>
         <RightSide />

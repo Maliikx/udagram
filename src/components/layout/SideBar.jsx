@@ -32,7 +32,7 @@ function SideBar() {
 
   return (
     <>
-    <nav className=" hidden  md:flex flex-col justify-between w-[30%] h-[85%] mr-2 mt-[calc(56px+2.5rem)] p-6 text-white bg-blue-700 rounded-3xl rounded-tr-none rounded-bl-none ">
+    <nav className=" hidden  md:flex flex-col justify-between w-[30%] h-[85%] mr-2 mt-[calc(56px+2.5rem)] p-6 text-white bg-blue-700 rounded-3xl rounded-tr-none rounded-br-none ">
       <ul className="w-full flex h-1/2  flex-col justify-around">
           <Link to="/home" className="text-2xl align-middle ">
         <li className="flex items-center border-b py-5  hover:scale-105 duration-300">
@@ -54,19 +54,21 @@ function SideBar() {
 
           <Heart className="inline-block mr-2" size={36} />
           <button className="text-2xl align-middle ">Likes</button>
+    
         </li>
+        
         </Link>
         <li className="flex items-center border-b py-5 hover:scale-105 duration-300">
           <PlusSquare className="inline-block mr-2" size={36} />
           <button className="text-2xl align-middle ">Post</button>
         </li>
+          <button className="text-2xl align-middle " onClick={toggleDarkMode}>
         <li className="flex items-center border-b py-5 hover:scale-105 duration-300">
           {isDarkMode? <Sun className="inline-block mr-2" size={36} /> : <Moon className="inline-block mr-2" size={36} />}
           
-          <button className="text-2xl align-middle " onClick={toggleDarkMode}>
            {isDarkMode?'Light mode':'Dark mode'}
-          </button>
         </li>
+          </button>
       </ul>
       <div className="flex items-center gap-3 justify-between">
         <div className="flex items-center gap-3">
@@ -103,8 +105,12 @@ function SideBar() {
               <span className="hidden lg:inline ">profile</span> 
           </Link>
         </li>
+     
         <li className="flex items-center border-b py-5 hover:scale-105 duration-300">
+        <Link to="/likes">
           <Heart className=" inline-block mr-2" size={36} />
+          </Link>
+
           <button className=" text-2xl align-middle ">
             
           <span className="hidden lg:inline ">Likes</span> 
