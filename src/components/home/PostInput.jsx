@@ -94,6 +94,11 @@ const PostInput = (props) => {
           value={postContent}
           className="bg-transparent outline-none w-full "
           placeholder="Type some text..."
+          onKeyDown={e => {
+            if (e.key === 'Enter') createPost()
+          }
+            
+          } 
         />
       </div>
       <div className="flex justify-between">
@@ -104,6 +109,7 @@ const PostInput = (props) => {
         <button
           onClick={createPost}
           className="text-white font-bold bg-blue-700 px-5 rounded duration-300 "
+          
         >
           Post
         </button>

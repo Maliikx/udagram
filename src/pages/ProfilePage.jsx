@@ -8,8 +8,10 @@ import RightSide from "../components/layout/RightSide";
 import Post from "../components/home/Post";
 
 const ProfilePage = () => {
+
   const { username } = useParams();
   const [posts, setPosts] = useState([]);
+  const [bio, setBio] = useState([]);
 
   const [profilePosts, setProfilePosts] = useState([]);
 
@@ -35,7 +37,7 @@ const ProfilePage = () => {
       setPosts(JSON.parse(localStorage.getItem("posts")));
     }
   }, []);
-  
+
   return (
     <>
       <NavBar />
@@ -51,7 +53,10 @@ const ProfilePage = () => {
             <h1 className=" text-2xl font-bold">{username}</h1>
           </div>
           <div className="rounded flex flex-col gap-6 w-full overflow-y-scroll no-scrollbar">
-            {profilePosts
+            {profilePosts.length === 0 ? (
+        <div className="self-center font-bold">- Nothing to show -</div>
+      ):(
+            profilePosts
               .sort((a, b) => b.createdAt - a.createdAt)
               .map((post) => (
                 <Post
@@ -60,7 +65,7 @@ const ProfilePage = () => {
                   setPosts={setPosts}
                   posts={posts}
                 />
-              ))}
+              )))}
           </div>
         </div>
         <RightSide />
