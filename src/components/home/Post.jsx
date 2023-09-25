@@ -27,14 +27,15 @@ function Post(props) {
         <div className=' flex text-secondary justify-around'>
           <button className=' hover:text-red-600 bg-transparent text-content flex items-center duration-300 gap-1'>
             <Heart className='' />
-            Like
+            <span className='hidden lg:inline'>like</span>
           </button>
-          <button className=' hover:text-blue-600  bg-transparent text-content flex items-center duration-300 gap-1'>
-            <MessageSquare /> Comment
+          <button className='  hover:text-blue-600  bg-transparent text-content flex items-center duration-300 gap-1'>
+            <MessageSquare /> 
+            <span className='hidden lg:inline'>Comment</span>
           </button>
           <button className=' hover:text-green-600 bg-transparent text-content flex items-center duration-300 gap-1'>
             <Repeat2 />
-            Share
+           <span className='hidden lg:inline'>Share</span> 
           </button>
         </div>
       </div>

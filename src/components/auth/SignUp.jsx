@@ -315,7 +315,7 @@ const SignUp = (props) => {
           </div>
 
           <p className=" text-sm text-center flex gap-1  ">
-            <p className="hidden md:inline"> Already have an account?</p>
+            <p className="hidden lg:inline"> Already have an account?</p>
             <span
               className="    underline text-blue-500 hover:text-blue-600 duration-300 cursor-pointer "
               onClick={() => props.setAuthState("login")}

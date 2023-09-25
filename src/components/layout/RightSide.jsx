@@ -11,7 +11,7 @@ function RightSide() {
   }, []);
 
   return (
-    <nav className="flex flex-col w-[30%] p-6 h-[85%] ml-2 mt-[calc(56px+2.5rem)] bg-secondary justify-center items-center rounded-3xl rounded-tl-none rounded-br-none ">
+    <nav className=" hidden lg:inline flex flex-col w-[30%] p-6 h-[85%] ml-2 mt-[calc(56px+2.5rem)] bg-secondary justify-center items-center rounded-3xl rounded-tl-none rounded-br-none ">
       <div className="h-full  w-full flex flex-col items-center ">
         <h1 className="text-xl">Also on Udagram</h1>
         <div className="flex flex-col w-full h-full">

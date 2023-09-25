@@ -165,7 +165,7 @@ const SignIn = (props) => {
         </form>
       </div>
       {/* side picture div */}
-      <div className=" w-[45%] hidden md:inline">
+      <div className=" w-[45%] hidden lg:inline">
         <img
           src="/assets/clouds.jpeg"
           className="h-[28rem] rounded-r-lg w-full "
