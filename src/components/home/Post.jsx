@@ -105,7 +105,7 @@ function Post(props) {
           </button>
           <button className=" hover:text-green-600 bg-transparent text-content flex items-center duration-300 gap-1">
             <Repeat2 />
-            21
+           
           </button>
         </div>
         <div className={` flex   flex-col gap-3 text-secondary justify-around  ${

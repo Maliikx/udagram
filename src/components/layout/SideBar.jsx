@@ -54,7 +54,9 @@ function SideBar() {
 
           <Heart className="inline-block mr-2" size={36} />
           <button className="text-2xl align-middle ">Likes</button>
+    
         </li>
+        
         </Link>
         <li className="flex items-center border-b py-5 hover:scale-105 duration-300">
           <PlusSquare className="inline-block mr-2" size={36} />
@@ -103,8 +105,12 @@ function SideBar() {
               <span className="hidden lg:inline ">profile</span> 
           </Link>
         </li>
+     
         <li className="flex items-center border-b py-5 hover:scale-105 duration-300">
+        <Link to="/likes">
           <Heart className=" inline-block mr-2" size={36} />
+          </Link>
+
           <button className=" text-2xl align-middle ">
             
           <span className="hidden lg:inline ">Likes</span> 
