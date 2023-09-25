@@ -11,9 +11,13 @@ import Cmnt from "./Cmnt";
 function Post(props) {
   const [isLiked, setIsLiked] = useState(false);
   const [pressedComment, setPressedComment] = useState(false);
-  const [commentContent, setCommentContent] = useState('');
+  const [commentContent, setCommentContent] = useState({
+    user: {
+
+    },
+    content: '',
+  });
   const [preCommentContent, setPreCommentContent] = useState('');
-  var content = '';
   
   // const [loggedInUser, setLoggedInUser] = useState([]);
 
@@ -100,21 +104,22 @@ function Post(props) {
               fill="transparent"
             />
             <div
-              className={`${
-                isLiked ? "text-red-600 font-bold" : "text-content font-bold"
-              } `}
+              className={`hover:text-red-600${
+                isLiked ? "text-red-600 " : "text-content "
+              }font-semibold `}
             >
               {isLiked ? "Liked!" : "Like"}
             </div>
+
           </button>
           <button
             onClick={manageComment}
-            className=" hover:text-blue-600  bg-transparent text-content flex items-center duration-300 gap-1"
+            className=" hover:text-blue-600  bg-transparent text-content font-semibold flex items-center duration-300 gap-1"
           >
             <MessageSquare /> Comment
           </button>
-          <button className=" hover:text-green-600 bg-transparent text-content flex items-center duration-300 gap-1">
-            <Repeat2 />
+          <button className=" hover:text-green-600 bg-transparent text-content font-semibold flex items-center duration-300 gap-1">
+            <Repeat2 /> Repost
            
           </button>
         </div>
@@ -122,16 +127,16 @@ function Post(props) {
               pressedComment ? "" : "hidden"
             }`} >
           <div>
-            <div className=" flex">
+            <div className=" flex bg-secondary p-2.5  rounded-2xl">
             <input
               type="text"
-              className="w-full text-content bg-secondary rounded-br-none  rounded-2xl p-2 outline-none"
+              className="w-full text-content bg-secondary rounded-2xl  outline-none"
                 placeholder="Write comment..."
                 value={preCommentContent}
                 onChange={(event) => {
                   setPreCommentContent(event.target.value);
                 }}/>
-              <button className="text-white font-bold bg-blue-700 px-5 rounded duration-300 "
+              <button className="text-white font-bold bg-blue-700 px-2 text-sm rounded-[0.50rem] rounded-r-[0.50rem] duration-300 "
                 onClick={
                   () => { 
                     setCommentContent(preCommentContent)
@@ -139,13 +144,13 @@ function Post(props) {
                   }
                }
               >
-              Comment
+              Reply
             </button>
 
             </div>
           </div>
           <div>
-            <Cmnt cmnt={commentContent} />
+            {/* <Cmnt cmnt={commentContent} /> */}
           </div>
         </div>
       </div>
