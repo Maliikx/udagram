@@ -1,4 +1,5 @@
 import React from "react";
+import { Heart } from "lucide-react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
@@ -7,26 +8,18 @@ import NavBar from "../components/layout/NavBar";
 import RightSide from "../components/layout/RightSide";
 import Post from "../components/home/Post";
 
-const ProfilePage = () => {
-  const { username } = useParams();
+
+const LikesPage = () => {
   const [posts, setPosts] = useState([]);
 
-  const [profilePosts, setProfilePosts] = useState([]);
+  const [likedPosts, setLikedPosts] = useState([]);
 
   useEffect(() => {
-    const users = JSON.parse(localStorage.getItem("users"));
-
     const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
-    if (loggedInUser.username === username) {
-      setProfilePosts(loggedInUser.posts);
-    } else {
-      const user = users.filter((user) => {
-        return user.username === username;
-      })[0];
-      setProfilePosts(user.posts);
-    }
-  }, [username]);
+  setLikedPosts(loggedInUser.likes);
+
+  }, []);
 
   useEffect(() => {
     if (!localStorage.getItem("posts")) {
@@ -39,19 +32,27 @@ const ProfilePage = () => {
   return (
     <>
       <NavBar />
-      <section className="w-full lg:w-[85%] h-screen relative flex items-start justify-around">
+      <section className="w-[80%] h-screen relative flex items-start justify-around">
         <SideBar />
-        <div className=" w-full lg:w-[85%] w-2/3 bg-secondary p-10 flex gap-6 flex-col items-center justify- h-[85vh] mt-[calc(56px+2.5rem)] rounded-3xl rounded-tl-none rounded-br-none">
+        <div className="w-2/3 bg-secondary p-10 flex gap-6 flex-col items-center justify- h-[85vh] mt-[calc(56px+2.5rem)] rounded-3xl rounded-tl-none rounded-br-none">
           <div className="w-full flex-col items-center flex  justify-center border-b pb-3 ">
-            <img
+            {/* <img
               src="/assets/cat.jpg"
               alt=""
               className=" rounded-full border-4 border-blue-700 w-24"
+            /> */}
+           <div className="border-[5px] p-3 rounded-full border-content opacity-40">
+           <Heart
+              className=" text-"
+              fill="white"
+              size={80}
+              
             />
-            <h1 className=" text-2xl font-bold">{username}</h1>
+           </div>
+            <h1 className=" font-bold text-2xl text-content opacity-40">Liked posts!</h1>
           </div>
           <div className="rounded flex flex-col gap-6 w-full overflow-y-scroll no-scrollbar">
-            {profilePosts
+            {likedPosts
               .sort((a, b) => b.createdAt - a.createdAt)
               .map((post) => (
                 <Post
@@ -69,4 +70,4 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage;
+export default LikesPage;
