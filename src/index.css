@@ -40,6 +40,15 @@
     }
   }
 }
+*::-webkit-scrollbar {
+  background-color: var(--color-wall);
+  width: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(29 78 216);
+  border-radius: 5px;
+}
 
 #box-light {
   box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
