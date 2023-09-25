@@ -73,14 +73,14 @@ function Post(props) {
               className={`${isLiked ? "fill-red-600 text-red-600" : ""} `}
               fill="transparent"
             />
-            <div className={`${isLiked ? "text-red-600 font-bold" : "text-content font-bold"} `}>{isLiked ? 'Liked!': 'Like'}</div>
+            <div className={`${isLiked ? "text-red-600 font-bold" : "text-content font-bold"} hidden md:block `}>{isLiked ?  'Liked!': 'Like'}</div>
           </button>
           <button className=" hover:text-blue-600  bg-transparent text-content flex items-center duration-300 gap-1">
-            <MessageSquare /> 22
+            <MessageSquare /> 
           </button>
           <button className=" hover:text-green-600 bg-transparent text-content flex items-center duration-300 gap-1">
             <Repeat2 />
-            21
+           
           </button>
         </div>
       </div>

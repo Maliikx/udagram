@@ -14,8 +14,13 @@ function RightSide() {
     <nav className=" hidden lg:inline flex flex-col w-[30%] p-6 h-[85%] ml-2 mt-[calc(56px+2.5rem)] bg-secondary justify-center items-center rounded-3xl rounded-tl-none rounded-br-none ">
       <div className="h-full  w-full flex flex-col items-center ">
         <h1 className="text-xl">Also on Udagram</h1>
-        <div className="flex flex-col w-full h-full">
-          {registeredUsers
+        
+        <div className="flex flex-col w-full h-full ">
+        {registeredUsers.length <=1 ? (
+            <div className="self-center font-bold  ">- Nothing to show -</div>
+            ):(
+        registeredUsers
+          
             .filter((user) => user.id !== loggedInUser.id)
             .map((user) => (
               <div
@@ -29,7 +34,10 @@ function RightSide() {
                 />
                 <Link to = {`/profile/${user.username}`}><h1 className="font-bold capitalize hover:underline">{user.username}</h1></Link>
               </div>
-            ))}
+            )
+           
+            
+             ) )}
         </div>
       </div>
       {/* <h1 className="font-bold mb-5">YOU LOVE THIS WEBSITE!</h1>
