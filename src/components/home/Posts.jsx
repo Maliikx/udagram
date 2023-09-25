@@ -3,6 +3,7 @@ import Post from "./Post";
 import PostInput from "./PostInput";
 import useIsMount from "../../utils/hooks/useMount";
 
+
 const Posts = () => {
   const [posts, setPosts] = useState([]);
   const isMount = useIsMount();
