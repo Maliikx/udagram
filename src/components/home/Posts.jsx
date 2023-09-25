@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import Post from "./Post";
-import PostInput from "./PostInput";
-import useIsMount from "../../utils/hooks/useMount";
-
+import React, { useEffect, useState } from 'react';
+import Post from './Post';
+import PostInput from './PostInput';
+import useIsMount from '../../utils/hooks/useMount';
+import { motion } from 'framer-motion';
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
@@ -10,22 +10,28 @@ const Posts = () => {
 
   useEffect(() => {
     if (isMount) return;
-    localStorage.setItem("posts", JSON.stringify(posts));
+    localStorage.setItem('posts', JSON.stringify(posts));
   }, [posts]);
 
   useEffect(() => {
-    if (!localStorage.getItem("posts")) {
-      localStorage.setItem("posts", JSON.stringify([]));
+    if (!localStorage.getItem('posts')) {
+      localStorage.setItem('posts', JSON.stringify([]));
     } else {
-      setPosts(JSON.parse(localStorage.getItem("posts")));
+      setPosts(JSON.parse(localStorage.getItem('posts')));
     }
   }, []);
 
   return (
-    <div className=" rounded flex flex-col gap-6 w-full overflow-y-scroll no-scrollbar ">
+    <div
+      transition={{ duration: 0.4, delay: 0.1 }}
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -50 }}
+      className=' rounded flex flex-col gap-6 w-full overflow-y-scroll no-scrollbar '
+    >
       <PostInput setPosts={setPosts} posts={posts} />
       {posts.length === 0 ? (
-        <div className="self-center font-bold">- Nothing to show -</div>
+        <div className='self-center font-bold'>- Nothing to show -</div>
       ) : (
         posts
           .sort((a, b) => b.createdAt - a.createdAt)
