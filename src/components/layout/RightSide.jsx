@@ -15,7 +15,11 @@ function RightSide() {
       <div className="h-full  w-full flex flex-col items-center ">
         <h1 className="text-xl">Also on Udagram</h1>
         <div className="flex flex-col w-full h-full">
-          {registeredUsers
+        
+        { registeredUsers.length <= 1 ? (
+        <div className=" self-center font-bold">- Nothing to show -</div>
+      ):(
+          registeredUsers
             .filter((user) => user.id !== loggedInUser.id)
             .map((user) => (
               <div
@@ -29,6 +33,8 @@ function RightSide() {
                 />
                 <Link to = {`/profile/${user.username}`}><h1 className="font-bold capitalize hover:underline">{user.username}</h1></Link>
               </div>
+            )
+            
             ))}
         </div>
       </div>
