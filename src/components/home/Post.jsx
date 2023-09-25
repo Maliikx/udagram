@@ -34,9 +34,19 @@ function Post(props) {
       users[loggedInUserIndex].likes.push(currentPost);
       localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
       localStorage.setItem("users", JSON.stringify(users));
-      console.log(users[loggedInUserIndex]);
+      console.log("liked");
+      console.log(loggedInUser.likes);
     } else {
-      loggedInUser.likes.pull(currentPost);
+      console.log("unliked");
+      loggedInUser.likes = loggedInUser.likes.filter(
+        (post) => post.id !== currentPost.id
+      );
+      users[loggedInUserIndex].likes = users[loggedInUserIndex].likes.filter(
+        (post) => post.id !== currentPost.id
+      );
+      console.log(loggedInUser.likes);
+      localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+      localStorage.setItem("users", JSON.stringify(users));
     }
   }
 
@@ -73,7 +83,13 @@ function Post(props) {
               className={`${isLiked ? "fill-red-600 text-red-600" : ""} `}
               fill="transparent"
             />
-            <div className={`${isLiked ? "text-red-600 font-bold" : "text-content font-bold"} `}>{isLiked ? 'Liked!': 'Like'}</div>
+            <div
+              className={`${
+                isLiked ? "text-red-600 font-bold" : "text-content font-bold"
+              } `}
+            >
+              {isLiked ? "Liked!" : "Like"}
+            </div>
           </button>
           <button className=" hover:text-blue-600  bg-transparent text-content flex items-center duration-300 gap-1">
             <MessageSquare /> 22
