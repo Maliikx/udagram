@@ -86,7 +86,11 @@ const ProfilePage = () => {
               )}
             </div>
             {selectBio ? (
-              <div className=' flex overflow-x-scroll w-full  items-center justify-start border-b p-3 relative'>
+              <motion.div className=' flex overflow-x-scroll w-full  items-center justify-start border-b p-3 relative'
+              transition={{ type:'keyframes' ,duration: 0.4, delay: 0.1 }}
+              initial={{ opacity: 0, height: '100' }}
+              animate={{ opacity: 1, y: '100' }}
+              >
                 <div className='flex gap-4'>
                   {quotes.map((quote, index) => (
                     <div
@@ -102,7 +106,7 @@ const ProfilePage = () => {
                     </div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             ) : (
               <h2 className='text-content font-mono font-bold'>
                 {bio ? `"${bio}"` : ''}
