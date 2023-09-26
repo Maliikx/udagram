@@ -14,9 +14,16 @@ const LikesPage = () => {
   const [likedPosts, setLikedPosts] = useState([]);
 
   useEffect(() => {
-    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    const storedPosts = JSON.parse(localStorage.getItem('posts'));
 
-    setLikedPosts(loggedInUser.likes);
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    const loggedInUserLikesIds = loggedInUser.likes;
+
+    const loggedInUserLikes = storedPosts.filter((post) => {
+      return loggedInUserLikesIds.includes(post.id);
+    });
+
+    setLikedPosts(loggedInUserLikes);
   }, []);
 
   useEffect(() => {

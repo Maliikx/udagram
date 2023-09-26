@@ -18,7 +18,8 @@ function SideBar() {
 
   const [user, setUser] = useState({});
 
-  const { isDarkMode, toggleDarkMode } = useContext(ThemeContext);
+  const { isDarkMode, toggleDarkMode, focusPostInput } =
+    useContext(ThemeContext);
 
   useEffect(() => {
     if (localStorage.getItem('loggedInUser'))
@@ -57,7 +58,12 @@ function SideBar() {
           </Link>
           <li className='flex items-center border-b py-5 hover:scale-105 duration-300'>
             <PlusSquare className='inline-block mr-2' size={36} />
-            <button className='text-2xl align-middle '>Post</button>
+            <button
+              className='text-2xl align-middle '
+              onClick={() => focusPostInput()}
+            >
+              Post
+            </button>
           </li>
           <button className='text-2xl align-middle ' onClick={toggleDarkMode}>
             <li className='flex items-center border-b py-5 hover:scale-105 duration-300'>

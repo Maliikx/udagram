@@ -17,17 +17,28 @@ const ProfilePage = () => {
   const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
   useEffect(() => {
+    const storedPosts = JSON.parse(localStorage.getItem('posts'));
+
+    const loggedInUserPostIds = loggedInUser.postIds;
+    const loggedInUserPosts = storedPosts.filter((post) => {
+      return loggedInUserPostIds.includes(post.id);
+    });
+
     const users = JSON.parse(localStorage.getItem('users'));
-    console.log(loggedInUser.bio);
 
     if (loggedInUser.username === username) {
-      setProfilePosts(loggedInUser.posts);
+      setProfilePosts(loggedInUserPosts);
       setBio(loggedInUser.bio);
     } else {
       const user = users.filter((user) => {
         return user.username === username;
       })[0];
-      setProfilePosts(user.posts);
+
+      const userPostIds = user.postIds;
+      const userPosts = storedPosts.filter((post) => {
+        return userPostIds.includes(post.id);
+      });
+      setProfilePosts(userPosts);
       setBio(user.bio);
     }
   }, [username]);
@@ -71,14 +82,14 @@ const ProfilePage = () => {
               alt=''
               className=' rounded-full border-4 border-blue-700 w-24'
             />
-            <div className='flex items-center justify-center w-full relative'>
+            <div className='flex items-center  justify-center w-full relative'>
               <h1 className=' text-2xl font-bold capitalize'>{username}</h1>
               {loggedInUser.username === username && (
                 <button
                   onClick={() => {
                     setSelectBio(!selectBio);
                   }}
-                  className='bg-blue-700 font-bold rounded-full p-2 text-white absolute right-10 duration-300 hover:opacity-80 '
+                  className='bg-blue-700 font-bold rounded-full  p-2 text-white absolute right-10 duration-300 hover:opacity-80 '
                 >
                   {selectBio ? `${bio ? 'Save' : 'Cancel'}` : 'Edit Bio'}
                 </button>
@@ -103,7 +114,7 @@ const ProfilePage = () => {
                 </div>
               </div>
             ) : (
-              <h2 className='text-content font-mono font-bold'>
+              <h2 className='text-content font-mono font-bold text-center'>
                 {bio ? `"${bio}"` : ''}
               </h2>
             )}
