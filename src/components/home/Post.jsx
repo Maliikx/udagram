@@ -208,10 +208,6 @@ function Post(props) {
                     content: preCommentContent,
                   },
                 ]);
-                currentPost.comments.push({
-                  user: loggedInUser,
-                  content: preCommentContent,
-                });
 
                 let currentPostIndex = posts.findIndex(
                   (post) => post.id === currentPost.id
