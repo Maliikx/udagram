@@ -17,7 +17,7 @@ function App() {
   return (
     <BrowserRouter>
       <main
-        className={`relative flex min-h-screen flex-col items-center text-content bg-wall ${
+        className={`relative fonty flex min-h-screen flex-col items-center text-content bg-wall ${
           isDarkMode ? 'theme-dark' : 'theme-light'
         }`}
       >

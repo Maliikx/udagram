@@ -142,6 +142,7 @@ const SignUp = (props) => {
         postIds: [],
         likes: [],
         bio: '',
+        
       };
 
       for (let i = 0; i < registeredUsers.length; i++) {
