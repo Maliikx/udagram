@@ -4,6 +4,8 @@ import React , {useEffect,useState} from "react";
 function Timer() {
     const [seconds,setSeconds]=useState(0);
     const [minuits,setMinutes]=useState(0);
+    const [hour,setHour]=useState(0);
+
 
     let timer;
     useEffect(()=>{
@@ -15,7 +17,13 @@ function Timer() {
             setMinutes(minuits+1);
             setSeconds(0);
         }
-    },1000)
+         else if (minuits===59){
+      setHour(hour+1);
+      setMinutes(0);
+
+     } },1000)
+   
+
 
     return()=>clearInterval(timer);
 });
@@ -24,7 +32,10 @@ function Timer() {
     <div className="  flex justify-items-center">
     
     <div className=" w-10">
-        <h1>{minuits<10? "0" +minuits :minuits}:{seconds<10? "0" +seconds: seconds}</h1>
+
+        <h1>{hour<10? "0" +hour :hour}
+        :{minuits<10? "0" +minuits :minuits}
+        :{seconds<10? "0" +seconds: seconds}</h1>
     </div>
     </div>
     
