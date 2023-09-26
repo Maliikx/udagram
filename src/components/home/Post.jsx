@@ -224,11 +224,12 @@ function Post(props) {
             </button>
           </div>
           <div className='flex flex-col gap-3 mt-3'>
-            {comments.map((comment) => (
+            {comments.map((comment, idx) => (
               <Cmnt
                 comment={comment}
                 setcomments={setComments}
                 cmnt={comment}
+                key={idx}
               />
             ))}
           </div>
