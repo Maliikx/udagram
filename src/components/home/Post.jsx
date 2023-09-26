@@ -185,6 +185,7 @@ function Post(props) {
               className='w-full text-content bg-secondary rounded-2xl  outline-none'
               placeholder='Write comment...'
               value={preCommentContent}
+              hidden={!pressedComment}
               onChange={(event) => {
                 setPreCommentContent(event.target.value);
               }}
