@@ -100,13 +100,13 @@ const PostInput = (props) => {
         />
       </div>
       <div className="flex justify-between">
-        <button className="bg-accent p-2 rounded duration-300 flex items-center gap-1 hover:bg-primary opacity-0">
+        <button className="bg-accent p-2 cursor-default rounded duration-300 flex items-center gap-1 hover:bg-primary opacity-0">
           <Image className="text-content" />
           <span>Upload an image</span>
         </button>
         <button
           onClick={createPost}
-          className="text-white font-bold bg-blue-700 px-5 rounded duration-300 hover:opacity-80 "
+          className="text-white font-bold bg-blue-700 px-2 sm:px-5 text-sm:text-base rounded duration-300 hover:opacity-80 "
         >
           Post
         </button>

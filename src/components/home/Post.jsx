@@ -13,14 +13,17 @@ import toast from 'react-hot-toast';
 function Post(props) {
   const [isLiked, setIsLiked] = useState(false);
   const [pressedComment, setPressedComment] = useState(false);
-
+  
+  
+  
   const [commentContent, setCommentContent] = useState({
     user: {},
     content: '',
   });
   const [preCommentContent, setPreCommentContent] = useState('');
   const [comments, setComments] = useState([]);
-
+  // useEffect(,[])
+  
   // const [loggedInUser, setLoggedInUser] = useState([]);
 
   const users = JSON.parse(localStorage.getItem('users'));

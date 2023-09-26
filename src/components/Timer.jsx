@@ -29,9 +29,9 @@ function Timer() {
 });
 
   return (
-    <div className="  flex justify-items-center">
+    <div className="  flex justify-items-center ">
     
-    <div className=" w-10">
+    <div className=" ">
 
         <h1>{hour<10? "0" +hour :hour}
         :{minuits<10? "0" +minuits :minuits}

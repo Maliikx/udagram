@@ -74,8 +74,8 @@ function SideBar() {
               {isDarkMode ? 'Light mode' : 'Dark mode'}
             </li>
           </button>
-          <li className='flex flex-col items-center border-b py-5 hover:scale-105 duration-300'>
-            <h1>your max is 2 hours</h1>
+          <li className='flex flex-col  items-center border-b py-5 hover:scale-105 duration-300'>
+                <h1 className='text-2xl font-extrabold'>Tick Tock?</h1>
             <Timer />
           </li>
         </ul>
@@ -159,9 +159,7 @@ function SideBar() {
             </h1>
           </div>
 
-          <button onClick={logout}>
-            <LogOut />
-          </button>
+         
         </div>
       </nav>
     </>
