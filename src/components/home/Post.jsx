@@ -12,7 +12,6 @@ import toast from 'react-hot-toast';
 
 function Post(props) {
   const [isLiked, setIsLiked] = useState(false);
-  const [isReposted, setIsReposted] = useState(false);
   const [pressedComment, setPressedComment] = useState(false);
 
   const [commentContent, setCommentContent] = useState({
@@ -83,7 +82,6 @@ function Post(props) {
       users[loggedInUserIndex].postIds.push(currentPost.id);
       localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
       localStorage.setItem('users', JSON.stringify(users));
-      isReposted(true);
     }
   }
 
@@ -158,10 +156,7 @@ function Post(props) {
             className=' hover:text-green-600 bg-transparent text-content font-semibold flex items-center duration-300 gap-1'
           >
             <Repeat2 />
-            <span className='hidden lg:inline'>
-              {' '}
-              {isLiked ? 'Repost!' : 'Reposted'}
-            </span>
+            <span className='hidden lg:inline'>Repost</span>
           </button>
         </div>
         <motion.div
