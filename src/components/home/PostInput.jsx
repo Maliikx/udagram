@@ -82,10 +82,13 @@ const PostInput = (props) => {
   }, [createPost]);
 
   return (
-    <div className="bg-accent p-3 border-blue-700 border-x-2 rounded-tl-none rounded-br-none rounded-3xl text-content w-full flex flex-col gap-10">
+    <div className="bg-accent p-4  border-blue-700 border-x-2 rounded-tl-none rounded-br-none rounded-3xl text-content w-full flex flex-col gap-10">
       <div className="flex gap-2 items-center">
-        <img src="/assets/cat.jpg" alt="" className="w-12 h-12 rounded-full" />
-        <input
+      <img
+              src='/assets/cat.jpg'
+              alt=''
+              className='w-10 h-10 rounded-full rounded-tl-none border border-blue-700 border-x-2'
+            />        <input
           onChange={(event) => {
             setPostContent(event.target.value);
           }}

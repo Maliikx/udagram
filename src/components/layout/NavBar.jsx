@@ -31,11 +31,11 @@ function NavBar() {
           <h1 className="  text-2xl select-none">dagram</h1>
         </div>
         <div className="p-4 w-3/12 flex">
-          <Search className=" hidden lg:inline absolute text-gray-400 " />
+          <Search className=" hidden  absolute text-gray-400 " />
           <input
             type="text"
             placeholder="Search..."
-            className=" hidden lg:inline  w-full pl-7 py-[0.9rem] bg-transparent border-b   outline-none text-content "
+            className=" hidden   w-full pl-7 py-[0.9rem] bg-transparent border-b   outline-none text-content "
           />
         </div>
           <div className= "  flex items-center gap-5  lg:hidden">

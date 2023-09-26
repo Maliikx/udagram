@@ -54,15 +54,15 @@ function SideBar() {
               <button className=' align-middle '>Likes</button>
             </li>
           </Link>
-          <li className='flex items-center border-b py-5 hover:scale-105 duration-300'>
-            <PlusSquare className='inline-block mr-2' size={36} />
             <button
               className='text-2xl align-middle '
               onClick={() => focusPostInput()}
             >
+          <li className='flex items-center border-b py-5 hover:scale-105 duration-300'>
+            <PlusSquare className='inline-block mr-2' size={36} />
               Post
-            </button>
           </li>
+            </button>
           <button className=' align-middle ' onClick={toggleDarkMode}>
             <li className='flex items-center border-b py-5 hover:scale-105 duration-300'>
               {isDarkMode ? (
@@ -115,11 +115,11 @@ function SideBar() {
             className='flex items-center  py-3 hover:scale-105 duration-300'
             onClick={() => focusPostInput()}
           >
+          <button
+            className=' text-2xl align-middle '
+            onClick={() => focusPostInput()}
+          >
             <PlusSquare className='inline-block cursor-pointer ' size={26} />
-            <button
-              className=' text-2xl align-middle '
-              onClick={() => focusPostInput()}
-            >
               <span className='hidden lg:inline '>Post</span>
             </button>
           </li>
