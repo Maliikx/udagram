@@ -30,6 +30,9 @@ function SideBar() {
   function logout() {
     navigate('/');
     localStorage.removeItem('loggedInUser');
+    localStorage.removeItem('seconds');
+    localStorage.removeItem('minuits');
+    localStorage.remove('hours');
   }
 
   return (
@@ -75,7 +78,7 @@ function SideBar() {
             </li>
           </button>
           <li className='flex flex-col  items-center border-b py-5 hover:scale-105 duration-300'>
-                <h1 className='text-2xl font-extrabold'>Tick Tock?</h1>
+            <h1 className='text-2xl font-extrabold'>Tick Tock?</h1>
             <Timer />
           </li>
         </ul>
@@ -158,8 +161,6 @@ function SideBar() {
               {user.username ? user.username : 'User'}
             </h1>
           </div>
-
-         
         </div>
       </nav>
     </>

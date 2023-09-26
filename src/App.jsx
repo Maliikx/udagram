@@ -9,9 +9,11 @@ import { useContext } from 'react';
 import { ThemeContext } from './utils/context/themeContext';
 import { Toaster } from 'react-hot-toast';
 import LikesPage from './pages/LikesPage';
+import Timer from './components/Timer';
 
 function App() {
   const { isDarkMode } = useContext(ThemeContext);
+
   return (
     <BrowserRouter>
       <main
@@ -27,7 +29,6 @@ function App() {
         />
         <Routes>
           <Route path='/' element={<AuthPage />} />
-
           <Route path='/home' element={<HomePage />} />
           <Route path='/profile/:username' element={<ProfilePage />} />
           <Route path='/likes' element={<LikesPage />} />
