@@ -116,7 +116,7 @@ function Post(props) {
               fill='transparent'
             />
             <div
-              className={`hover:text-red-600${
+              className={`hover:text-red-600 hidden lg:inline  ${
                 isLiked ? 'text-red-600 ' : 'text-content '
               }font-semibold `}
             >
@@ -127,10 +127,12 @@ function Post(props) {
             onClick={manageComment}
             className=' hover:text-blue-600  bg-transparent text-content font-semibold flex items-center duration-300 gap-1'
           >
-            <MessageSquare /> Comment
+            <MessageSquare />
+            <span className='hidden lg:inline'> comment</span>
           </button>
           <button className=' hover:text-green-600 bg-transparent text-content font-semibold flex items-center duration-300 gap-1'>
-            <Repeat2 /> Repost
+            <Repeat2 /> 
+            <span className='hidden lg:inline'> Repost</span>
           </button>
         </div>
         <div
@@ -156,7 +158,7 @@ function Post(props) {
                   setPreCommentContent('');
                 }}
               >
-                Reply
+               <span className='hidden lg:inline'> Reply</span> 
               </button>
             </div>
           </div>
