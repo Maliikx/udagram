@@ -31,7 +31,7 @@ const ProfilePage = () => {
       setBio(loggedInUser.bio);
     } else {
       const user = users.filter((user) => {
-        return user.username === username;
+        return user.username.toLowerCase() === username.toLowerCase();
       })[0];
 
       const userPostIds = user.postIds;
