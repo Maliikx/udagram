@@ -55,6 +55,9 @@ function Post(props) {
       users[loggedInUserIndex].likes = users[loggedInUserIndex].likes.filter(
         (post) => post.id !== currentPost.id
       );
+      props.setLikedPosts((prevLikes) =>
+        prevLikes.filter((post) => post.id !== currentPost.id)
+      );
       console.log(loggedInUser.likes);
       localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
       localStorage.setItem('users', JSON.stringify(users));
@@ -131,7 +134,7 @@ function Post(props) {
             <span className='hidden lg:inline'> comment</span>
           </button>
           <button className=' hover:text-green-600 bg-transparent text-content font-semibold flex items-center duration-300 gap-1'>
-            <Repeat2 /> 
+            <Repeat2 />
             <span className='hidden lg:inline'> Repost</span>
           </button>
         </div>
@@ -158,7 +161,7 @@ function Post(props) {
                   setPreCommentContent('');
                 }}
               >
-               <span className='hidden lg:inline'> Reply</span> 
+                <span className='hidden lg:inline'> Reply</span>
               </button>
             </div>
           </div>
