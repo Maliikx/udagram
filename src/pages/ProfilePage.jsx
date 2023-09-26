@@ -19,7 +19,6 @@ const ProfilePage = () => {
 
   useEffect(() => {
     const storedPosts = JSON.parse(localStorage.getItem('posts'));
-
     const loggedInUserPostIds = loggedInUser.postIds;
     const loggedInUserPosts = storedPosts.filter((post) => {
       return loggedInUserPostIds.includes(post.id);
@@ -97,10 +96,11 @@ const ProfilePage = () => {
               )}
             </div>
             {selectBio ? (
-              <motion.div className=' flex overflow-x-scroll w-full  items-center justify-start border-b p-3 relative'
-              transition={{ type:'keyframes' ,duration: 0.4, delay: 0.1 }}
-              initial={{ opacity: 0, height: '100' }}
-              animate={{ opacity: 1, y: '100' }}
+              <motion.div
+                className=' flex overflow-x-scroll w-full  items-center justify-start border-b p-3 relative'
+                transition={{ type: 'keyframes', duration: 0.4, delay: 0.1 }}
+                initial={{ opacity: 0, height: '100' }}
+                animate={{ opacity: 1, y: '100' }}
               >
                 <div className='flex gap-4'>
                   {quotes.map((quote, index) => (

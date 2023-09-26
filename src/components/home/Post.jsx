@@ -12,6 +12,7 @@ import toast from 'react-hot-toast';
 
 function Post(props) {
   const [isLiked, setIsLiked] = useState(false);
+  const [isReposted, setIsReposted] = useState(false);
   const [pressedComment, setPressedComment] = useState(false);
 
   const [commentContent, setCommentContent] = useState({
@@ -48,7 +49,6 @@ function Post(props) {
       users[loggedInUserIndex].likes.push(currentPost.id);
       localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
       localStorage.setItem('users', JSON.stringify(users));
-      console.log(loggedInUser.likes);
     } else {
       loggedInUser.likes = loggedInUser.likes.filter(
         (postId) => postId !== currentPost.id
@@ -67,6 +67,24 @@ function Post(props) {
   function manageComment() {
     setPressedComment(!pressedComment);
     return pressedComment;
+  }
+
+  function manageRepost() {
+    if (loggedInUser.postIds.includes(currentPost.id)) {
+      toast.error('Already reposted');
+      return;
+    }
+    if (currentPost.user.id === loggedInUser.id) {
+      toast.error('Cannot repost your own post');
+      return;
+    } else {
+      toast.success('Reposted');
+      loggedInUser.postIds.push(currentPost.id);
+      users[loggedInUserIndex].postIds.push(currentPost.id);
+      localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+      localStorage.setItem('users', JSON.stringify(users));
+      isReposted(true);
+    }
   }
 
   return (
@@ -133,9 +151,17 @@ function Post(props) {
             <MessageSquare />
             <span className='hidden lg:inline'>Comment</span>
           </button>
-          <button className=' hover:text-green-600 bg-transparent text-content font-semibold flex items-center duration-300 gap-1'>
+          <button
+            onClick={() => {
+              manageRepost();
+            }}
+            className=' hover:text-green-600 bg-transparent text-content font-semibold flex items-center duration-300 gap-1'
+          >
             <Repeat2 />
-            <span className='hidden lg:inline'>Repost</span>
+            <span className='hidden lg:inline'>
+              {' '}
+              {isLiked ? 'Repost!' : 'Reposted'}
+            </span>
           </button>
         </div>
         <motion.div
