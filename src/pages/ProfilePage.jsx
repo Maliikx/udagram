@@ -7,6 +7,7 @@ import NavBar from '../components/layout/NavBar';
 import RightSide from '../components/layout/RightSide';
 import Post from '../components/home/Post';
 import { quotes } from '../utils/constants/quotes';
+import { motion } from 'framer-motion';
 
 const ProfilePage = () => {
   const { username } = useParams();
