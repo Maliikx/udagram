@@ -106,9 +106,15 @@ function SideBar() {
             </Link>
           </li>
 
-          <li className='flex items-center  py-3 hover:scale-105 duration-300'>
-            <PlusSquare className='inline-block ' size={26} />
-            <button className=' text-2xl align-middle '>
+          <li
+            className='flex items-center  py-3 hover:scale-105 duration-300'
+            onClick={() => focusPostInput()}
+          >
+            <PlusSquare className='inline-block cursor-pointer ' size={26} />
+            <button
+              className=' text-2xl align-middle '
+              onClick={() => focusPostInput()}
+            >
               <span className='hidden lg:inline '>Post</span>
             </button>
           </li>
