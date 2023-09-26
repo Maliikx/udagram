@@ -7,15 +7,12 @@ import {
   Router,
   LogOut,
   Moon,
-  
 } from 'lucide-react';
 import { useContext, useEffect, useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../../utils/context/themeContext';
 import Timer from '../Timer';
-
-
 
 function SideBar() {
   const navigate = useNavigate();
@@ -38,7 +35,7 @@ function SideBar() {
   return (
     <>
       <nav className=' hidden  lg:flex flex-col justify-between w-[30%] h-[85%] mr-2 mt-[calc(56px+2.5rem)] p-6 text-white bg-blue-700 rounded-3xl rounded-tr-none rounded-br-none '>
-        <ul className='w-full flex h-1/2 text-lg xl:text-2xl flex-col justify-around'>
+        <ul className='w-full flex  text-lg xl:text-2xl flex-col justify-around'>
           <Link to='/home' className=' align-middle '>
             <li className='flex items-center border-b py-5  hover:scale-105 duration-300'>
               <HomeIcon className=' inline-block mr-2' size={36} />
@@ -78,8 +75,8 @@ function SideBar() {
             </li>
           </button>
           <li className='flex flex-col items-center border-b py-5 hover:scale-105 duration-300'>
-            <h1>your max is 2 hours</h1> 
-            <Timer/>
+            <h1>your max is 2 hours</h1>
+            <Timer />
           </li>
         </ul>
         <div className='flex items-center gap-3 justify-between'>
@@ -149,7 +146,6 @@ function SideBar() {
               {isDarkMode ? 'Light mode' : 'Dark mode'}
             </button>
           </li>
-          
         </ul>
         <div className=' align-middle flex items-center gap-3  justify-between'>
           <div className='flex items-center gap-3 '>
@@ -160,16 +156,13 @@ function SideBar() {
             />
             <h1 className='hidden lg:inline text-lg font-bold capitalize'>
               {user.username ? user.username : 'User'}
-              
             </h1>
           </div>
 
           <button onClick={logout}>
             <LogOut />
           </button>
-
         </div>
-      
       </nav>
     </>
   );

@@ -91,7 +91,6 @@ function Post(props) {
               </Link>
             </h1>
           </div>
-
           {props.post.user.bio && (
             <span className=' text-sm italic bg-blue-700 rounded-lg rounded-tl-none rounded-br-none p-1  text-white'>
               {props.post.user.bio}
@@ -112,16 +111,16 @@ function Post(props) {
               setIsLiked(!isLiked);
               manageLike();
             }}
-            className=' hover:text-red-600 bg-transparent text-content flex items-center duration-300 gap-1'
+            className=' hover:text-red-600 group bg-transparent text-content flex items-center duration-300 gap-1'
           >
             <Heart
               className={`${isLiked ? 'fill-red-600 text-red-600' : ''} `}
               fill='transparent'
             />
             <div
-              className={`hover:text-red-600 hidden lg:inline  ${
+              className={`group-hover:text-red-600 hidden lg:inline duration-300 ${
                 isLiked ? 'text-red-600 ' : 'text-content '
-              }font-semibold `}
+              } font-semibold `}
             >
               {isLiked ? 'Liked!' : 'Like'}
             </div>
@@ -131,21 +130,21 @@ function Post(props) {
             className=' hover:text-blue-600  bg-transparent text-content font-semibold flex items-center duration-300 gap-1'
           >
             <MessageSquare />
-            <span className='hidden lg:inline'> comment</span>
+            <span className='hidden lg:inline'>Comment</span>
           </button>
           <button className=' hover:text-green-600 bg-transparent text-content font-semibold flex items-center duration-300 gap-1'>
             <Repeat2 />
-            <span className='hidden lg:inline'> Repost</span>
+            <span className='hidden lg:inline'>Repost</span>
           </button>
         </div>
         <motion.div
-        animate={pressedComment ? 'open' : 'closed'}
-          className={` flex   flex-col gap-3 text-secondary justify-around  ${
+          animate={pressedComment ? 'open' : 'closed'}
+          className={` flex flex-col gap-3 text-secondary justify-around  ${
             pressedComment ? '' : 'hidden'
           }`}
           transition={{ type: 'keyframes', stiffness: 150, bounce: 1 }}
           variants={{
-            open: { opacity: 1, height: '50px' },
+            open: { opacity: 1, height: 'auto' },
             closed: {
               opacity: 0,
               height: '0px',
@@ -155,40 +154,38 @@ function Post(props) {
             },
           }}
         >
-          <div>
-            <div className=' flex bg-secondary p-2.5  rounded-2xl rounded-br-none'>
-              <input
-                type='text'
-                className='w-full text-content bg-secondary rounded-2xl  outline-none'
-                placeholder='Write comment...'
-                value={preCommentContent}
-                onChange={(event) => {
-                  setPreCommentContent(event.target.value);
-                }}
-              />
-              <button
-                className='text-white font-bold bg-blue-700 px-2 text-sm rounded-[0.50rem] rounded-br-none  duration-300 '
-                onClick={() => {
-                  setCommentContent({
+          <div className=' flex bg-secondary p-2.5  rounded-2xl rounded-br-none'>
+            <input
+              type='text'
+              className='w-full text-content bg-secondary rounded-2xl  outline-none'
+              placeholder='Write comment...'
+              value={preCommentContent}
+              onChange={(event) => {
+                setPreCommentContent(event.target.value);
+              }}
+            />
+            <button
+              className='text-white font-bold bg-blue-700 px-2 text-sm rounded-[0.50rem] rounded-br-none  duration-300 '
+              onClick={() => {
+                setCommentContent({
+                  user: loggedInUser,
+                  content: preCommentContent,
+                });
+
+                setComments((prevComments) => [
+                  ...prevComments,
+                  {
                     user: loggedInUser,
                     content: preCommentContent,
-                  });
-
-                  setComments((prevComments) => [
-                    ...prevComments,
-                    {
-                      user: loggedInUser,
-                      content: preCommentContent,
-                    },
-                  ]);
-                  setPreCommentContent('');
-                }}
-              >
-                <span className='text-xs sm:text-base'> Reply</span>
-              </button>
-            </div>
+                  },
+                ]);
+                setPreCommentContent('');
+              }}
+            >
+              <span className='text-xs sm:text-base'> Reply</span>
+            </button>
           </div>
-          <div className='flex flex-col gap-3  '>
+          <div className='flex flex-col gap-3 mt-3'>
             {comments.map((comment) => (
               <Cmnt
                 comment={comment}
