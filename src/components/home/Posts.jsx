@@ -27,7 +27,7 @@ const Posts = () => {
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -50 }}
-      className=' rounded flex flex-col gap-6 w-full overflow-y-scroll no-scrollbar '
+      className=' text-base lg:text-lg rounded flex flex-col gap-6 w-full overflow-y-scroll no-scrollbar '
     >
       <PostInput setPosts={setPosts} posts={posts} />
       {posts.length === 0 ? (
