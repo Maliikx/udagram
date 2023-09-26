@@ -14,11 +14,16 @@ function RightSide() {
     <nav className=' hidden lg:inline  flex-col w-[30%] p-6 h-[85%] ml-2 mt-[calc(56px+2.5rem)] bg-secondary justify-center items-center rounded-3xl rounded-tl-none rounded-bl-none '>
       <div className='h-full  w-full flex flex-col items-center '>
         <h1 className='text-base xl:text-xl'>Also on Udagram</h1>
-
-        <div className='flex flex-col w-full h-full justify-center '>
+        <div
+          className={`flex flex-col w-full h-full  ${
+            registeredUsers.length <= 1
+              ? 'items-center justify-center'
+              : 'items-start justify-start'
+          } `}
+        >
           {registeredUsers.length <= 1 ? (
             <div className='self-center font-bold text-sm xl:text-base '>
-              - No users currently on the platform -
+              - Nothing to show -
             </div>
           ) : (
             registeredUsers
