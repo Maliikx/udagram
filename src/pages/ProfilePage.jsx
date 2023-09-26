@@ -7,6 +7,7 @@ import NavBar from '../components/layout/NavBar';
 import RightSide from '../components/layout/RightSide';
 import Post from '../components/home/Post';
 import { quotes } from '../utils/constants/quotes';
+import { motion } from 'framer-motion';
 
 const ProfilePage = () => {
   const { username } = useParams();
@@ -64,22 +65,33 @@ const ProfilePage = () => {
                 </button>
               )}
             </div>
-            {selectBio && (
-              <div className=' flex overflow-x-scroll w-full  items-center justify-center border-b p-3 relative'>
+            {selectBio ? (
+              <motion.div className=' flex overflow-x-scroll w-full  items-center justify-start border-b p-3 relative'
+              transition={{ duration: 0.4, delay: 0.1 }}
+              initial={{ opacity: 0, height: '0px'}}
+              animate={{ opacity: 1, height: '100px' }}
+              exit={{ opacity: 0, height: '0px'}}
+              >
                 <div className='flex gap-4'>
                   {quotes.map((quote, index) => (
                     <div
                       className={`px-4 py-2 flex-shrink-0 bg-accent text-content font-medium rounded p-2 cursor-pointer ${
                         bio === quote && 'bg-blue-700 text-white'
                       }`}
-                      onClick={() => setBio(quote)}
+                      onClick={() => {
+                        setBio(quote);
+                      }}
                       key={index}
                     >
                       {quote}
                     </div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
+            ) : (
+              <h2 className='text-content font-mono font-bold'>
+                {bio ? `"${bio}"` : ''}
+              </h2>
             )}
           </div>
           <div className='rounded flex flex-col gap-6 w-full overflow-y-scroll no-scrollbar'>

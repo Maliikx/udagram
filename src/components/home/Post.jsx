@@ -125,10 +125,22 @@ function Post(props) {
             <Repeat2 /> Repost
           </button>
         </div>
-        <div
-          className={` flex   flex-col gap-3 text-secondary justify-around  ${
-            pressedComment ? '' : 'hidden'
-          }`}
+        <motion.div
+        animate={pressedComment ? 'open' : 'closed'}
+        className={` flex   flex-col gap-3 text-secondary justify-around  ${
+          pressedComment ? '' : 'hidden'
+        }`}
+        transition={{ type: 'keyframes', stiffness: 150, bounce: 1 }}
+        variants={{
+          open: { opacity: 1, height: '50px' },
+          closed: {
+            opacity: 0,
+            height: '0px',
+            
+          },
+        }}
+
+          
         >
           <div>
             <div className=' flex bg-secondary p-2.5  rounded-2xl'>
@@ -153,7 +165,7 @@ function Post(props) {
             </div>
           </div>
           <div>{/* <Cmnt cmnt={commentContent} /> */}</div>
-        </div>
+        </motion.div>
       </motion.div>
     </>
   );
