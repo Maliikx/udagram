@@ -13,9 +13,7 @@ import toast from 'react-hot-toast';
 function Post(props) {
   const [isLiked, setIsLiked] = useState(false);
   const [pressedComment, setPressedComment] = useState(false);
-  
-  
-  
+
   const [commentContent, setCommentContent] = useState({
     user: {},
     content: '',
@@ -23,10 +21,11 @@ function Post(props) {
   const [preCommentContent, setPreCommentContent] = useState('');
   const [comments, setComments] = useState([]);
   // useEffect(,[])
-  
+
   // const [loggedInUser, setLoggedInUser] = useState([]);
 
   const users = JSON.parse(localStorage.getItem('users'));
+  let posts = JSON.parse(localStorage.getItem('posts'));
   const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
   const loggedInUserIndex = users.findIndex(
     (user) => user.id === loggedInUser.id
@@ -37,6 +36,7 @@ function Post(props) {
   )[0];
 
   useEffect(() => {
+    setComments(currentPost.comments);
     if (!currentPost) return;
 
     const isPostLiked = loggedInUser.likes.reduce((a, b) => {
@@ -208,6 +208,19 @@ function Post(props) {
                     content: preCommentContent,
                   },
                 ]);
+                currentPost.comments.push({
+                  user: loggedInUser,
+                  content: preCommentContent,
+                });
+
+                let currentPostIndex = posts.findIndex(
+                  (post) => post.id === currentPost.id
+                );
+                posts[currentPostIndex].comments.push({
+                  user: loggedInUser,
+                  content: preCommentContent,
+                });
+                localStorage.setItem('posts', JSON.stringify(posts));
                 setPreCommentContent('');
               }}
             >
