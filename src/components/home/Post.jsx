@@ -75,17 +75,25 @@ function Post(props) {
         className='  w-full bg-accent rounded-tl-none rounded-br-none rounded-3xl px-5 py-4 text-lg flex flex-col gap-6 '
       >
         {/* user info div */}
-        <div className='text-content flex gap-1 items-center '>
-          <img
-            src='/assets/cat.jpg'
-            alt=''
-            className='w-10 h-10 rounded-full rounded-tl-none border border-blue-700 border-x-2'
-          />
-          <h1 className='text-xl capitalize hover:underline'>
-            <Link to={`/profile/${props.post.user.username}`}>
-              <b>{props.post.user.username}</b>
-            </Link>
-          </h1>
+        <div className='text-content flex  items-center  relative justify-between '>
+          <div className='flex items-center gap-2'>
+            <img
+              src='/assets/cat.jpg'
+              alt=''
+              className='w-10 h-10 rounded-full rounded-tl-none border border-blue-700 border-x-2'
+            />
+            <h1 className='text-xl capitalize hover:underline'>
+              <Link to={`/profile/${props.post.user.username}`}>
+                <b>{props.post.user.username} </b>
+              </Link>
+            </h1>
+          </div>
+
+          {props.post.user.bio && (
+            <span className=' text-sm italic bg-blue-700 rounded-lg rounded-tl-none rounded-br-none p-1  text-white'>
+              {props.post.user.bio}
+            </span>
+          )}
         </div>
         {/* content */}
         <div> {props.post.content}</div>
