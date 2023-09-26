@@ -14,22 +14,43 @@ const ProfilePage = () => {
   const [posts, setPosts] = useState([]);
   const [bio, setBio] = useState('');
   const [selectBio, setSelectBio] = useState(false);
-
   const [profilePosts, setProfilePosts] = useState([]);
   const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
   useEffect(() => {
     const users = JSON.parse(localStorage.getItem('users'));
+    console.log(loggedInUser.bio);
 
     if (loggedInUser.username === username) {
       setProfilePosts(loggedInUser.posts);
+      setBio(loggedInUser.bio);
     } else {
       const user = users.filter((user) => {
         return user.username === username;
       })[0];
       setProfilePosts(user.posts);
+      setBio(user.bio);
     }
   }, [username]);
+
+  useEffect(() => {
+    const users = JSON.parse(localStorage.getItem('users'));
+    if (loggedInUser.username === username) {
+      const updatedUsers = users.map((user) => {
+        if (user.username === username) {
+          return { ...user, bio: bio };
+        } else {
+          return user;
+        }
+      });
+      localStorage.setItem('users', JSON.stringify(updatedUsers));
+      if (bio) {
+        loggedInUser.bio = bio;
+        localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+      } else {
+      }
+    }
+  }, [bio]);
 
   useEffect(() => {
     if (!localStorage.getItem('posts')) {
@@ -45,7 +66,7 @@ const ProfilePage = () => {
       <section className='w-full lg:w-[85%] h-screen relative flex items-start justify-around'>
         <SideBar />
         <div className=' w-full lg:w-[85%] w-2/3  overflow-x-hidden bg-secondary p-10 flex gap-6 flex-col items-center justify- h-[85vh] mt-[calc(56px+2.5rem)] '>
-          <div className='w-full flex-col items-center flex  justify-center border-b pb-3   '>
+          <div className='w-full flex-col items-center flex  justify-center border-b pb-3'>
             <img
               src='/assets/cat.jpg'
               alt=''
@@ -57,21 +78,15 @@ const ProfilePage = () => {
                 <button
                   onClick={() => {
                     setSelectBio(!selectBio);
-                    setBio('');
                   }}
-                  className='bg-blue-700 font-bold rounded-full p-2 text-white absolute right-10 '
+                  className='bg-blue-700 font-bold rounded-full p-2 text-white absolute right-10 duration-300 hover:opacity-80 '
                 >
-                  {selectBio ? `${bio ? 'Save' : 'Cancel'}` : 'Edit'}
+                  {selectBio ? `${bio ? 'Save' : 'Cancel'}` : 'Edit Bio'}
                 </button>
               )}
             </div>
             {selectBio ? (
-              <motion.div className=' flex overflow-x-scroll w-full  items-center justify-start border-b p-3 relative'
-              transition={{ duration: 0.4, delay: 0.1 }}
-              initial={{ opacity: 0, height: '0px'}}
-              animate={{ opacity: 1, height: '100px' }}
-              exit={{ opacity: 0, height: '0px'}}
-              >
+              <div className=' flex overflow-x-scroll w-full  items-center justify-start border-b p-3 relative'>
                 <div className='flex gap-4'>
                   {quotes.map((quote, index) => (
                     <div
@@ -87,7 +102,7 @@ const ProfilePage = () => {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             ) : (
               <h2 className='text-content font-mono font-bold'>
                 {bio ? `"${bio}"` : ''}
