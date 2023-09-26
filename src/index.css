@@ -14,6 +14,7 @@
   --color-secondary: #ffffff;
   --color-accent: #f1f1f1f1;
   --color-content: #000000;
+  --color-toast: #252526;
 }
 
 .theme-dark {
@@ -22,6 +23,7 @@
   --color-secondary: #1e1e1e;
   --color-accent: #252526;
   --color-content: #ffffff;
+  --color-toast: #eeeeee;
 }
 
 @layer utilities {
@@ -37,6 +39,15 @@
       scrollbar-width: none; /* Firefox */
     }
   }
+}
+*::-webkit-scrollbar {
+  background-color: var(--color-wall);
+  width: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(29 78 216);
+  border-radius: 5px;
 }
 
 #box-light {
