@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Cmnt from './Cmnt';
+import toast from 'react-hot-toast';
 
 // import Comment from "/components/home/Comment.jsx";
 
@@ -148,13 +149,13 @@ function Post(props) {
             closed: {
               opacity: 0,
               height: '0px',
-              transitionEnd: {
-                zIndex: 1,
-              },
             },
           }}
         >
-          <div className=' flex bg-secondary p-2.5  rounded-2xl rounded-br-none'>
+          <div
+            className=' flex bg-secondary p-2.5  rounded-2xl rounded-br-none'
+            hidden={!pressedComment}
+          >
             <input
               type='text'
               className='w-full text-content bg-secondary rounded-2xl  outline-none'
@@ -167,6 +168,10 @@ function Post(props) {
             <button
               className='text-white font-bold bg-blue-700 px-2 text-sm rounded-[0.50rem] rounded-br-none  duration-300 '
               onClick={() => {
+                if (preCommentContent === '') {
+                  toast.error('Comment cannot be empty');
+                  return;
+                }
                 setCommentContent({
                   user: loggedInUser,
                   content: preCommentContent,
