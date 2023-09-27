@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-
+import { Link } from 'react-router-dom';
 const Cmnt = (props) => {
   return (
     <motion.div
@@ -15,9 +15,12 @@ const Cmnt = (props) => {
           alt=''
           className='w-7 h-7 rounded-full rounded-tl-none border border-blue-700 border-x-2'
         />
+        <Link to={`/profile/${props.cmnt.user.username}`}>
+          
         <h1 className=' text-sm lg:text-base font-semibold capitalize hover:underline'>
           {props.cmnt.user.username}
         </h1>
+         </Link>
       </div>
       <span className='text-xs  lg:text-base pl-9'>{props.cmnt.content}</span>
     </motion.div>
