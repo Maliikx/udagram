@@ -2,11 +2,15 @@ import { Image } from "lucide-react";
 import { useEffect, useState } from "react";
 import useIsMount from "../../utils/hooks/useMount";
 import toast from "react-hot-toast";
+import { ThemeContext } from "../../utils/context/themeContext";
+import { useContext } from "react";
 
 const PostInput = (props) => {
   const [postContent, setPostContent] = useState("");
   const [users, setUsers] = useState([]);
   const [loggedInUser, setLoggedInUser] = useState();
+
+  const { postInputRef } = useContext(ThemeContext);
 
   const isMount = useIsMount();
 
@@ -15,11 +19,25 @@ const PostInput = (props) => {
     setUsers(JSON.parse(localStorage.getItem("users")));
   }, []);
 
+  const [errorCount, setErrorCount] = useState(0);
+
   function createPost() {
     if (!postContent) {
-      toast.error('Post cannot be empty', {
-      
-      })
+      setErrorCount(errorCount + 1);
+      toast.error("Post cannot be empty", {
+        icon: `${
+          errorCount === 0
+            ? "😶"
+            : errorCount === 1
+            ? "😐"
+            : errorCount === 2
+            ? "😒"
+            : errorCount === 3
+            ? "😤"
+            : "😡"
+        }`,
+      });
+
       return;
     }
     props.setPosts((prevPosts) => [
@@ -37,18 +55,7 @@ const PostInput = (props) => {
     setPostContent("");
     setLoggedInUser((prevUser) => ({
       ...prevUser,
-      posts: [
-        ...prevUser.posts,
-        {
-          id: prevUser.posts.length + 1,
-          content: postContent,
-          user: loggedInUser,
-          likeCount: 0,
-          comments: [],
-          sharedUserIds: [],
-          createdAt: Date.now(),
-        },
-      ],
+      postIds: [...prevUser.postIds, prevUser.postIds.length + 1],
     }));
 
     setUsers((prevUsers) => {
@@ -58,22 +65,14 @@ const PostInput = (props) => {
       const updatedUsers = [...prevUsers];
       updatedUsers[userIndex] = {
         ...updatedUsers[userIndex],
-        posts: [
-          ...updatedUsers[userIndex].posts,
-          {
-            id: updatedUsers[userIndex].posts.length + 1,
-            content: postContent,
-            user: loggedInUser,
-            likeCount: 0,
-            comments: [],
-            sharedUserIds: [],
-            createdAt: Date.now(),
-          },
+        postIds: [
+          ...updatedUsers[userIndex].postIds,
+          prevUsers[userIndex].postIds.length + 1,
         ],
       };
       return updatedUsers;
     });
-    toast.success('Post successfully added!')
+    toast.success("Post successfully added!");
   }
 
   useEffect(() => {
@@ -83,33 +82,32 @@ const PostInput = (props) => {
   }, [createPost]);
 
   return (
-    <div className="bg-accent p-3 border-blue-700 border-x-2 rounded-tl-none rounded-br-none rounded-3xl text-content w-full flex flex-col gap-10">
+    <div className="bg-accent p-4  border-blue-700 border-x-2 rounded-tl-none rounded-br-none rounded-3xl text-content w-full flex flex-col gap-10">
       <div className="flex gap-2 items-center">
-        <img src="/assets/cat.jpg" alt="" className="w-12 h-12 rounded-full" />
-        <input
+      <img
+              src='/assets/cat.jpg'
+              alt=''
+              className='w-10 h-10 rounded-full rounded-tl-none border border-blue-700 border-x-2'
+            />        <input
           onChange={(event) => {
             setPostContent(event.target.value);
           }}
           type="text"
           value={postContent}
+          ref={postInputRef}
           className="bg-transparent outline-none w-full "
           placeholder="Type some text..."
-          onKeyDown={e => {
-            if (e.key === 'Enter') createPost()
-          }
-            
-          } 
+          onKeyDown={(e) => {
+            if (e.key === "Enter") createPost();
+          }}
         />
       </div>
-      <div className="flex justify-between">
-        <button className="bg-accent p-2 rounded duration-300 flex items-center gap-1 hover:bg-primary">
-          <Image className="text-content" />
-          <span>Upload an image</span>
+      <div className="flex justify-between  h-fit">
+        <button className="  bg-accent p-2 cursor-default rounded duration-300 flex items-center gap-1 hover:bg-primary opacity-0">
         </button>
         <button
           onClick={createPost}
-          className="text-white font-bold bg-blue-700 px-5 rounded duration-300 "
-          
+          className="text-white font-bold bg-blue-700 py-2 sm:py-2.5 px-3 sm:px-5 text-sm:text-base rounded duration-300 hover:opacity-80 "
         >
           Post
         </button>

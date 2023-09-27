@@ -7,6 +7,7 @@ import NavBar from '../components/layout/NavBar';
 import RightSide from '../components/layout/RightSide';
 import Post from '../components/home/Post';
 import { quotes } from '../utils/constants/quotes';
+import { motion } from 'framer-motion';
 
 const ProfilePage = () => {
   const { username } = useParams();
@@ -17,17 +18,27 @@ const ProfilePage = () => {
   const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
   useEffect(() => {
+    const storedPosts = JSON.parse(localStorage.getItem('posts'));
+    const loggedInUserPostIds = loggedInUser.postIds;
+    const loggedInUserPosts = storedPosts.filter((post) => {
+      return loggedInUserPostIds.includes(post.id);
+    });
+
     const users = JSON.parse(localStorage.getItem('users'));
-    console.log(loggedInUser.bio);
 
     if (loggedInUser.username === username) {
-      setProfilePosts(loggedInUser.posts);
+      setProfilePosts(loggedInUserPosts);
       setBio(loggedInUser.bio);
     } else {
       const user = users.filter((user) => {
-        return user.username === username;
+        return user.username.toLowerCase() === username.toLowerCase();
       })[0];
-      setProfilePosts(user.posts);
+
+      const userPostIds = user.postIds;
+      const userPosts = storedPosts.filter((post) => {
+        return userPostIds.includes(post.id);
+      });
+      setProfilePosts(userPosts);
       setBio(user.bio);
     }
   }, [username]);
@@ -71,21 +82,26 @@ const ProfilePage = () => {
               alt=''
               className=' rounded-full border-4 border-blue-700 w-24'
             />
-            <div className='flex items-center justify-center w-full relative'>
+            <div className='flex items-center  justify-center w-full relative'>
               <h1 className=' text-2xl font-bold capitalize'>{username}</h1>
               {loggedInUser.username === username && (
                 <button
                   onClick={() => {
                     setSelectBio(!selectBio);
                   }}
-                  className='bg-blue-700 font-bold rounded-full p-2 text-white absolute right-10 duration-300 hover:opacity-80 '
+                  className='bg-blue-700 font-bold rounded-full  p-2 text-white absolute right-10 duration-300 hover:opacity-80 '
                 >
                   {selectBio ? `${bio ? 'Save' : 'Cancel'}` : 'Edit Bio'}
                 </button>
               )}
             </div>
             {selectBio ? (
-              <div className=' flex overflow-x-scroll w-full  items-center justify-start border-b p-3 relative'>
+              <motion.div
+                className=' flex overflow-x-scroll w-full  items-center justify-start border-b p-3 relative'
+                transition={{ type: 'keyframes', duration: 0.4, delay: 0.1 }}
+                initial={{ opacity: 0, height: '100' }}
+                animate={{ opacity: 1, y: '100' }}
+              >
                 <div className='flex gap-4'>
                   {quotes.map((quote, index) => (
                     <div
@@ -101,9 +117,9 @@ const ProfilePage = () => {
                     </div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             ) : (
-              <h2 className='text-content font-mono font-bold'>
+              <h2 className='text-content font-mono font-bold text-center'>
                 {bio ? `"${bio}"` : ''}
               </h2>
             )}

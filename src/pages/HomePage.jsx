@@ -5,6 +5,7 @@ import NavBar from "../components/layout/NavBar";
 import RightSide from "../components/layout/RightSide";
 import SideBar from "../components/layout/SideBar";
 import { useNavigate } from "react-router-dom";
+import Timer from "../components/Timer";
 
 const HomePage = () => {
 
@@ -20,10 +21,10 @@ const HomePage = () => {
   },[])
   return (
     <>
-      <NavBar />
+       <NavBar />
       <section className="w-full lg:w-[85%] h-screen relative flex items-start justify-around">
         <SideBar />
-        <div className="w-full lg:w-[85%] bg-secondary p-10 flex gap-6 flex-col items-center justify- h-[85vh] mt-[calc(56px+2.5rem)] ">
+        <div className="w-[95%] mt-[70px] lg:mt-[calc(56px+2.5rem)] lg:w-[85%] bg-secondary p-10 flex gap-6 flex-col items-center  h-[85vh]  ">
           <Posts />
         </div>
         <RightSide />

@@ -62,11 +62,11 @@ const SignIn = (props) => {
   return (
     // all container
     <div
-      className='bg-secondary w-[90%]  md:w-[42%]  rounded-lg  flex justify-between text-start  items-center shadow-2xl  h-[28rem]  font-sans'
+      className=' bg-secondary w-[90%]  md:w-[42%] rounded-lg  flex justify-between text-start shadow-2xl  items-center  h-[28rem]  font-sans'
       id='box'
     >
       {/* main container */}
-      <div className=' text-sm md:text-base flex flex-col w-[100%] md:w-[50%] h-full justify-around p-8    mb-5 relative '>
+      <div className='flex flex-col w-[100%] lg:w-[50%] h-full justify-around p-8 mb-5 relative '>
         {/* logo container */}
         <div className='flex'>
           <img

@@ -139,9 +139,10 @@ const SignUp = (props) => {
         username: username,
         email: email,
         password: password,
-        posts: [],
+        postIds: [],
         likes: [],
         bio: '',
+        
       };
 
       for (let i = 0; i < registeredUsers.length; i++) {
